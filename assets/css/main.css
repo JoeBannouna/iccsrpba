@@ -1,0 +1,99 @@
+.nav-link {
+  direction: rtl;
+  text-align: right;
+}
+
+div.span-services-dropdown {
+  margin-bottom: 20px;
+  display: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.signup-form {
+  direction: rtl;
+}
+
+#contact-us-form {
+  background: #f1f1f1f1;
+  padding: 5% 0;
+}
+
+@media (min-width: 992px) {
+  .header {
+    /* display: none; */
+    overflow-y: scroll;
+    left: auto;
+    right: 0;
+  }
+  .main-wrapper {
+    margin-left: 0;
+    margin-right: 280px;
+  }
+}
+
+@media (min-width: 768px) {
+  #contact-us-form form .form-group {
+    width: 50%;
+  }
+  #contact-us-form form .form-group input {
+    width: 100%;
+  }
+  #contact-us-form form {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+#contact-us-form form {
+  margin: 0 auto;
+  width: 90%;
+  text-align: center;
+}
+
+#contact-us-form * {
+  text-align: right;
+}
+
+.card {
+  margin: 5% 0;
+  text-align: right;
+}
+
+.card div .btn {
+  height: auto;
+  min-height: 2.75rem;
+}
+/*# sourceMappingURL=main.css.map */
