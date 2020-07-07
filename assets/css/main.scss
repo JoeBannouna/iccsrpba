@@ -1,80 +1,5 @@
-.nav-link {
-  direction: rtl;
-  text-align: right;
-}
-
-div.span-services-dropdown {
-  margin-bottom: 20px;
-  display: none;
-}
-
-/* width */
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888; 
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-}
-
-.signup-form {
-  direction: rtl;
-}
-
-#contact-us-form {
-  background: #f1f1f1f1;
-  padding: 5% 0;
-}
-
-@media (min-width: 992px) {
-  .header {
-    /* display: none; */
-    overflow-y: scroll;
-    left: auto;
-    right: 0;
-  }
-  .main-wrapper {
-    margin-left: 0;
-    margin-right: 280px;
-  }
-}
-
-@media (min-width: 768px) {
-  #contact-us-form form .form-group {
-    width: 50%;
-  }
-  #contact-us-form form .form-group input {
-    width: 100%;
-  }
-  #contact-us-form form {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-  }
-}
-
-#contact-us-form form {
-  margin: 0 auto;
-  width: 90%;
-  text-align: center;
-}
-
-#contact-us-form * {
-  text-align: right;
+a {
+  cursor: pointer;
 }
 
 .card {
@@ -86,3 +11,24 @@ div.span-services-dropdown {
   height: auto;
   min-height: 2.75rem;
 }
+
+// Import colors
+@import 'colors';
+
+// Import shotcut classes
+@import 'shortcuts';
+
+// Import scrollbar styles
+@import 'scrollbar';
+
+// Import page layout styles
+@import 'layout';
+
+// Import page layout styles
+@import 'header';
+
+// Import page layout styles
+@import 'heading';
+
+// Import contact-us form styles
+@import 'contact';

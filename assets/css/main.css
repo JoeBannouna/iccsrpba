@@ -1,11 +1,51 @@
-.nav-link {
-  direction: rtl;
+a {
+  cursor: pointer;
+}
+
+.card {
+  margin: 5% 0;
   text-align: right;
 }
 
-div.span-services-dropdown {
-  margin-bottom: 20px;
-  display: none;
+.card div .btn {
+  height: auto;
+  min-height: 2.75rem;
+}
+
+.white-color {
+  color: white;
+}
+
+.transparent-white-color {
+  color: rgba(255, 255, 255, 0.564);
+}
+
+.black-color {
+  color: black;
+}
+
+.dark-grey-color {
+  color: #222;
+}
+
+.light-grey-color {
+  color: #777;
+}
+
+.white-color {
+  color: white;
+}
+
+.white-color {
+  color: white;
+}
+
+.arabic {
+  direction: rtl;
+}
+
+.arabic-text {
+  text-align: right;
 }
 
 /* width */
@@ -28,18 +68,8 @@ div.span-services-dropdown {
   background: #555;
 }
 
-.signup-form {
-  direction: rtl;
-}
-
-#contact-us-form {
-  background: #f1f1f1f1;
-  padding: 5% 0;
-}
-
 @media (min-width: 992px) {
   .header {
-    /* display: none; */
     overflow-y: scroll;
     left: auto;
     right: 0;
@@ -48,6 +78,54 @@ div.span-services-dropdown {
     margin-left: 0;
     margin-right: 280px;
   }
+}
+
+.nav-link {
+  direction: rtl;
+  text-align: right;
+}
+
+div.span-services-dropdown {
+  margin-bottom: 20px;
+  display: none;
+}
+
+div.main-banner-div {
+  background: url(../images/main-banner.jpg) no-repeat !important;
+  background-size: 100% auto !important;
+  background-position: center right !important;
+}
+
+div.main-banner-div .background-darkner {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(68%, rgba(0, 0, 0, 0.387)), to(rgba(255, 255, 255, 0))) !important;
+  background: linear-gradient(rgba(0, 0, 0, 0.387) 68%, rgba(255, 255, 255, 0)) !important;
+  border-radius: 0;
+}
+
+div.main-banner-div .background-darkner div h1 {
+  line-height: 1.3 !important;
+}
+
+@media screen and (max-width: 767px) {
+  div.main-banner-div {
+    background-size: auto 100% !important;
+  }
+  div.main-banner-div .background-darkner div {
+    text-align: center;
+  }
+  div.main-banner-div .background-darkner div h1 {
+    font-size: 9vw;
+    line-height: 1.5;
+    margin-bottom: 5%;
+  }
+  div.main-banner-div .background-darkner div p {
+    font-size: 16px;
+  }
+}
+
+#contact-us-form {
+  background: #f1f1f1f1;
+  padding: 5% 0;
 }
 
 @media (min-width: 768px) {
@@ -85,15 +163,5 @@ div.span-services-dropdown {
 
 #contact-us-form * {
   text-align: right;
-}
-
-.card {
-  margin: 5% 0;
-  text-align: right;
-}
-
-.card div .btn {
-  height: auto;
-  min-height: 2.75rem;
 }
 /*# sourceMappingURL=main.css.map */

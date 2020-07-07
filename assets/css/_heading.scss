@@ -1,0 +1,39 @@
+div.main-banner-div {
+  background: url(../images/main-banner.jpg) no-repeat !important;
+  background-size: 100% auto !important;
+  background-position: center right !important;
+  
+
+  .background-darkner {
+    background: linear-gradient(rgba(0, 0, 0, 0.387)68%, rgba(255, 255, 255, 0)) !important;
+    border-radius: 0;
+  
+    div {
+      h1 {
+        line-height: 1.3 !important;
+      }
+    }
+  }
+
+}
+
+// For mobile screens
+@media screen and (max-width: 767px) {
+  div.main-banner-div {
+    background-size: auto 100% !important;
+    
+    .background-darkner {
+      div {
+        text-align: center;
+        h1 {
+          font-size: 9vw;
+          line-height: 1.5;
+          margin-bottom: 5%;
+        }
+        p {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

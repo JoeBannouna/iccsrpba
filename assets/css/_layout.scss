@@ -1,0 +1,11 @@
+@media (min-width: 992px) {
+  .header {
+    overflow-y: scroll;
+    left: auto;
+    right: 0;
+  }
+  .main-wrapper {
+    margin-left: 0;
+    margin-right: 280px;
+  }
+}
