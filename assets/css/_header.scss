@@ -7,3 +7,29 @@ div.span-services-dropdown {
   margin-bottom: 20px;
   display: none;
 }
+
+header.header.text-center {
+  nav {
+
+    button.navbar-toggler {
+      margin-left: 86%;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  header.header.text-center {
+    nav {
+      padding-top: 5%;
+      padding-bottom: 0;
+
+      div {
+        div {
+          ul.social-list.list-inline.py-3.mx-auto {
+            padding: 0 !important;
+          }
+        }
+      }
+    }
+  }
+}

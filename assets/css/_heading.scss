@@ -1,6 +1,6 @@
 div.main-banner-div {
   background: url(../images/main-banner.jpg) no-repeat !important;
-  background-size: 100% auto !important;
+  background-size: auto 50vw !important;
   background-position: center right !important;
   
 
@@ -14,7 +14,13 @@ div.main-banner-div {
       }
     }
   }
+}
 
+// For tablet screens
+@media screen and (max-width: 1100px) {
+  div.main-banner-div {
+    background-size: auto 100%  !important;
+  }
 }
 
 // For mobile screens
