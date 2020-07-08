@@ -1,4 +1,6 @@
 function pageScript() {
+  isCategoriesPage = true;
+  
   // Category implementing
   let divNumber = 0;
   categories.map(({id, name, imgurl}, index) => {

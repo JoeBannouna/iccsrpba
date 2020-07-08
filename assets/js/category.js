@@ -1,4 +1,6 @@
 function pageScript() {
+  isCategoriesPage = true;
+  
   let categoryId = findGetParameter("id");
   $.ajax({
     type: "GET",

@@ -3,9 +3,26 @@
   text-align: right;
 }
 
-div.span-services-dropdown {
-  margin-bottom: 20px;
-  display: none;
+ul.navbar-nav.flex-column.text-right {
+  width: 100%;
+
+  li {
+    text-align: center;
+  }
+  
+  div.span-services-dropdown {
+    margin-bottom: 20px;
+    display: none;
+    
+    span {
+      li {
+        
+        a {
+          margin-right: 5%;
+        }
+      }
+    }
+  }
 }
 
 header.header.text-center {
