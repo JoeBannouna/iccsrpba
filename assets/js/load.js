@@ -41,12 +41,16 @@ function startMain() {
       if (!isCategoriesPage) servicesDropdown ? $(".services-dropdown").parent().addClass("active") : $(".services-dropdown").parent().removeClass("active");
       $(".span-services-dropdown").slideToggle();
     });
+    
+    const pageScriptExists = typeof pageScript !== "undefined";
+    
+    // Start the main.js and Execute page script if it exists.
+    if (pageScriptExists) {
+      mainScript();
+      pageScript();
+    } 
+    else mainScript(false);
 
-    // Start the main.js
-    mainScript();
-
-    // Execute page script if it exists.
-    if (typeof pageScript !== "undefined") pageScript();
   });
 }
 

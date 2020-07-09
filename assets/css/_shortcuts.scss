@@ -10,6 +10,18 @@
   text-align: center;
 }
 
+.text-align-right {
+  text-align: right;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
 @media screen and (min-width: 768px) {
   .width-100 {
     width: 100%;

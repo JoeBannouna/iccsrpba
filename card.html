@@ -23,6 +23,7 @@
   <!-- Theme CSS -->
   <link id="theme-style" rel="stylesheet" href="assets/css/theme-2.css" />
   <link id="theme-style" rel="stylesheet" href="assets/css/main.css" />
+  <link id="theme-style" rel="stylesheet" href="assets/css/loading.min.css">
 
   <!-- Load JQuery -->
   <script src="assets/plugins/jquery-3.3.1.min.js"></script>
@@ -55,88 +56,67 @@
 
     <br>
 
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="blog-post px-3 py-5 p-md-5 arabic arabic-text">
-          <br><br><br><br><br>
-          <form>
-            <div class="form-group">
-              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="الطلب">
+    
+    <div class="loading-page">
+      <div class="loading-icon">
+        <div class="ld ld-hourglass ld-spin-fast" style="font-size:64px;color:rgb(82, 166, 218)"></div>
+      </div>
+      <div class="container-fluid">
+        <h1 class="h2 text-align-center" id="card-title">القيام بدراسات جدوي دولية</h1>
+        <div class="row arabic">
+          <div class="col-sm-6 arabic arabic-text overflow-x-hidden">
+            <article class="blog-post px-3 py-5 p-md-5 ">
+              <h1 class="h3 font-weight-lighter">المزيد من التفاصيل</h1>
+              <br>
+              
+              <div class="blog-post-body">
+                <figure class="blog-banner">
+                    <img class="img-fluid" id="card-img" src="" alt="image">
+                </figure>
+                <p id="card-description"></p>
+              </div>
+            
+            </article>
+          </div>
+          <div class="col-sm-6 card-contact">
+            <div class="blog-post px-3 py-5 p-md-5 arabic arabic-text text-align-center">
+              <p class="h4 font-weight-lighter">طلب الخدمة أو اي أسئلة حولها</p>
+              <br>
+              <form>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="الاسم بالكامل">
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" id="" aria-describedby="emailHelp" placeholder="الايميل">
+                </div>
+                <div class="form-group">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="الطلب">
+                </div>
+                  <input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="الموضوع">
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" id="card-textarea" rows="3" placeholder=""></textarea>
+                </div>
+                <div class="form-group text-align-right">
+                  <label for="filesInput" class="lead">أي ملفات مرفقة</label>
+                  <input type="file" id="filesInput" class="form-control-file">
+                </div>
+                <button type="submit" class="btn btn-primary">ارسال</button>
+              </form>
             </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="الاسم بالكامل">
+          </div>
+    
+          <div class="container arabic arabic-text">
+            <div class="alert alert-warning" role="alert">
+              ملاحظة الأسعار بعد دراسة الطلب.
             </div>
-            <div class="form-group">
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="الايميل">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="الموضوع">
-            </div>
-            <div class="form-group">
-              <!-- <label for="exampleFormControlTextarea1">Example textarea</label> -->
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Example textarea"></textarea>
-            </div>
-            <div class="form-group">
-              <!-- <label for="exampleFormControlFile1">Example file input</label> -->
-              <input type="file" class="form-control-file" id="exampleFormControlFile1">
-            </div>
-
-            <!-- <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
-            </div> -->
-            <!-- <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div> -->
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-
+          </div>
         </div>
       </div>
-      <div class="col-sm-6">
-        <article class="blog-post px-3 py-5 p-md-5 arabic arabic-text">
-          <header class="blog-post-header">
-            <h2 class="title mb-2">Why Every Developer Should Have A Blog</h2>
-            <br>
-          </header>
-          
-            <div class="blog-post-body">
-              <figure class="blog-banner">
-                  <a href="https://made4dev.com"><img class="img-fluid" src="assets/images/blog/blog-post-banner.jpg" alt="image"></a>
-                  <figcaption class="mt-2 text-center image-caption">Image Credit: <a href="https://made4dev.com?ref=devblog" target="_blank">made4dev.com (Premium Programming T-shirts)</a></figcaption>
-              </figure>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. </p>
-              
-              <h3 class="mt-5 mb-3">Code Block Example</h3>
-              <p>You can get more info at <a href="https://highlightjs.org/" target="_blank">https://highlightjs.org/</a>. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. </p>
-              
-              <h3 class="mt-5 mb-3">Typography</h3>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-              <h5 class="my-3">Bullet Points:</h5>
-              <ul class="mb-5">
-              <li class="mb-2">Lorem ipsum dolor sit amet consectetuer.</li>
-              <li class="mb-2">Aenean commodo ligula eget dolor.</li>
-              <li class="mb-2">Aenean massa cum sociis natoque penatibus.</li>
-            </ul>
-            <ol class="mb-5">
-              <li class="mb-2">Lorem ipsum dolor sit amet consectetuer.</li>
-              <li class="mb-2">Aenean commodo ligula eget dolor.</li>
-              <li class="mb-2">Aenean massa cum sociis natoque penatibus.</li>
-            </ol>
-            <h5 class="my-3">Quote Example:</h5>
-            <blockquote class="blockquote m-lg-5 py-3 pl-4 px-lg-5">
-              <p class="mb-2">You might not think that programmers are artists, but programming is an extremely creative profession. It's logic-based creativity.</p>
-              <footer class="blockquote-footer">John Romero</footer>
-            </blockquote>
-            
-            
-            </div>
-        
-          </article>
-        </div>
-      </div>
-        
+    </div>
+    
+    <br>
     
     <section id="contact-us-form"></section>
     

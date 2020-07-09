@@ -12,6 +12,26 @@ a {
   min-height: 2.75rem;
 }
 
+div.loading-page {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .container-fluid {
+    display: none;
+  }
+
+  .loading-icon {
+    display: block;
+    
+    * {
+      display: block;
+    }
+  }
+}
+
 // Import colors
 @import 'colors';
 
@@ -35,3 +55,6 @@ a {
 
 // Import categories css
 @import 'categories';
+
+// Import categories css
+@import 'card';

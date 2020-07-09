@@ -12,6 +12,35 @@ a {
   min-height: 2.75rem;
 }
 
+div.loading-page {
+  min-height: 70vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div.loading-page .container-fluid {
+  display: none;
+}
+
+div.loading-page .loading-icon {
+  display: block;
+}
+
+div.loading-page .loading-icon * {
+  display: block;
+}
+
 .white-color {
   color: white;
 }
@@ -50,6 +79,18 @@ a {
 
 .text-align-center {
   text-align: center;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
 }
 
 @media screen and (min-width: 768px) {
@@ -233,5 +274,12 @@ div.main-banner-div .background-darkner div h1 {
   .container-fluid.marketing div.row div {
     margin-bottom: 5%;
   }
+}
+
+#filesInput.form-control-file {
+  background: lightgrey;
+  border: solid #999 0.5px;
+  border-radius: 3px;
+  text-align: left;
 }
 /*# sourceMappingURL=main.css.map */

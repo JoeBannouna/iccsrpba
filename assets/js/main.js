@@ -1,6 +1,6 @@
 // MAIN SCRIPT
 
-function mainScript() {
+function mainScript(imageLoading) {
   // Highlight active header link
   let activeHeaderLink = $("#main-script").attr("activeHeaderLink")
   if (typeof activeHeaderLink !== "undefined") $("." + activeHeaderLink).addClass("active");
@@ -11,6 +11,7 @@ function mainScript() {
     $([document.documentElement, document.body]).animate({
         scrollTop: $("#contact-us-form").offset().top
     }, 2000);
+
   });
 }
 
