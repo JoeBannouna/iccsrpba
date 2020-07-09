@@ -136,7 +136,7 @@ div.loading-page .loading-icon * {
 
 @media (min-width: 992px) {
   .header {
-    overflow-y: scroll;
+    overflow-y: auto;
     left: auto;
     right: 0;
   }
