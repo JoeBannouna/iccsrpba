@@ -1,6 +1,9 @@
 var isCategoriesPage;
 var categories;
 var dropDownItems = [];
+var pageLoaded;
+var page;
+var imagesLoaded = 0;
 let servicesDropdown = false;
 
 function loadContact() {
@@ -32,7 +35,6 @@ function startMain() {
     for (let i = 0; i < 3; i++) {
       dropDownItems.push(categories[number]);
       number--;
-      console.log(number);
     }
     dropDownItems.map(({id, name}) => $(".span-services-dropdown span").append(`<li class="nav-item"><a class="nav-link" href="category.html?id=${id}"><i class="fas fa-arrow-left fa-fw mr-2"></i> &nbsp;${name}</a></li>`));
     

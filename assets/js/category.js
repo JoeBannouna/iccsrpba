@@ -1,15 +1,18 @@
 function pageScript() {
   isCategoriesPage = true;
-  
+
   let categoryId = findGetParameter("id");
   $.ajax({
     type: "GET",
     url: "php/category.php?id=" + categoryId,
     success: function (response) {
+
       let category = JSON.parse(response);
       // Category implementing
       $(".cards h1").html(category.name);
     
+      let numberOfCards = 0;
+
       let divNumber = 0;
       category.services.map(({id, name, description, imgurl}, index) => {
         if (index % 3 === 0) {
@@ -28,19 +31,18 @@ function pageScript() {
         </div>
       </div>`
       )
+      numberOfCards++;
       })
-      
+
       // Pagination script
       let numberOfPages = Math.ceil(category.services.length / 3) ;
       let i = 0;
       while (i < numberOfPages) {
         i++;
-        $("#categories-pagination ul").append(`<li class="page-item"><a class="page-link" href="#page${i}">${i}</a></li>`);
+        $("#categories-pagination ul").append(`<li class="page-item"><a class="page-link" onclick="managePagination(70, ${i})">${i}</a></li>`);
       }
-    
-      // Hashtag management
-      managePagination(70);
-      $(window).on('hashchange', () => managePagination(70));
+ 
+      showPageAfterImageLoad(".card-img-top", {numberOfImages: numberOfCards, minimum: 3}, 70);
     }
   });
 }

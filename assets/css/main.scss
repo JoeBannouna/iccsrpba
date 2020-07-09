@@ -19,8 +19,8 @@ div.loading-page {
   justify-content: center;
   align-items: center;
 
-  .container-fluid {
-    display: none;
+  .main-page-core {
+    opacity: 0;
   }
 
   .loading-icon {

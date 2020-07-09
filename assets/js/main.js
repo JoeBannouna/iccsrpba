@@ -7,12 +7,19 @@ function mainScript(imageLoading) {
 
   // Contact button
   $("#contact-us-button").click(function() {
-    console.log("this should work")
     $([document.documentElement, document.body]).animate({
         scrollTop: $("#contact-us-form").offset().top
     }, 2000);
-
   });
+
+  // If there is no images to load show the page
+  if (imageLoading === false) {
+    showPageLoading();
+  } else {                        // Else wait for a maximum of 7 seconds
+    setTimeout(() => {
+      if (!pageLoaded) showPageLoading();
+    }, 7000);
+  }
 }
 
 
@@ -24,18 +31,18 @@ function isInteger(value) {
 }
 
 // Pagination function
-function managePagination(scrollOffset) {
-  if (document.location.hash !== "") {
-    $(".categories-span").css("display", "none");
-    $(`.categories-span${document.location.hash[5]}`).css("display", "");
+function managePagination(scrollOffset, pageNo) {
+  if (typeof page === "undefined") {
+    page = 1;
   } else {
-    document.location.hash = "#page1";
-    $(".categories-span").css("display", "");
+    page = pageNo;
   }
+  $(".categories-span").css("display", "none");
+  $(`.categories-span${pageNo}`).css("display", "");
   $("#categories-pagination ul li a").css("background", "white");
   
-  if (isInteger(document.location.hash[5])) {
-    const clickedButton = document.getElementById("categories-pagination").children[0].children[(document.location.hash[5] - 1)].children[0];
+  if (isInteger(page)) {
+    const clickedButton = document.getElementById("categories-pagination").children[0].children[(page - 1)].children[0];
     $(clickedButton).css("background", "#c1c1c1");
   }
   // Scroll to top for mobile :/
@@ -59,4 +66,27 @@ function findGetParameter(parameterName) {
         if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
       });
   return result;
+}
+
+// Hide loading animation and show page
+function showPageLoading() {
+  $("div.loading-page").css("display", "block");
+  $(".main-page-core").css("opacity", "1");
+  $(".loading-icon").css("display", " none");
+}
+
+// Check if images is loaded to show the page
+function showPageAfterImageLoad(selector, {numberOfImages, minimum}, movePixels) {
+  $(selector).one("load", () => {
+    imagesLoaded++;
+    if (imagesLoaded == numberOfImages || imagesLoaded > minimum) {
+      showPageLoading();
+      pageLoaded = true;
+    }
+    
+    // Hashtag management
+    if (movePixels !== false) {
+      managePagination(movePixels, 1);
+    }
+  });
 }

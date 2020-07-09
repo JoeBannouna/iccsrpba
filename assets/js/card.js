@@ -1,6 +1,6 @@
 function pageScript() {
   isCategoriesPage = true;
-  
+
   let cardId = findGetParameter("id");
   $.ajax({
     type: "GET",
@@ -12,14 +12,16 @@ function pageScript() {
       // Card implementing
       $("#card-title").html(name);
       $("#card-description").html(description);
-      $("#card-textarea").html(textarea);
-      $("#card-img").attr("src", imgurl)
-      $("#card-img").one("load", () => {
-        $(".container-fluid").css("display", " block");
-        $(".loading-icon").css("display", " none");
-      });
+      $("#card-textarea").attr("placeholder", textarea);
+      $("#card-img").attr("src", imgurl);
       
-      
+      showPageAfterImageLoad("#card-img", {numberOfImages: 1, minimum: 1}, false);
+
+      let offset = $(`#card-title`).offset();
+      offset.top -= 70;
+      $([document.documentElement, document.body]).animate({
+        scrollTop: offset.top
+      }, 1);
     }
   });
 }

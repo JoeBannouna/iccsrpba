@@ -29,8 +29,8 @@ div.loading-page {
           align-items: center;
 }
 
-div.loading-page .container-fluid {
-  display: none;
+div.loading-page .main-page-core {
+  opacity: 0;
 }
 
 div.loading-page .loading-icon {

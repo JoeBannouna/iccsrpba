@@ -1,7 +1,8 @@
 function pageScript() {
   isCategoriesPage = true;
-  
+
   // Category implementing
+  let numberOfCards = 0;
   let divNumber = 0;
   categories.map(({id, name, imgurl}, index) => {
     if (index % 6 === 0) {
@@ -9,7 +10,7 @@ function pageScript() {
       divNumber++;
     }
     $(`.categories-span${divNumber}`).append(
-  `<div class="col-md-4 text-align-center">
+  `<div class="col-md-4 text-justify text-center">
       <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="${imgurl}">
       <h4>${name}</h4>
       <p>
@@ -17,6 +18,7 @@ function pageScript() {
       </p>
     </div>`
   )
+  numberOfCards++;
   })
   
   // Pagination script
@@ -24,10 +26,8 @@ function pageScript() {
   let i = 0;
   while (i < numberOfPages) {
     i++;
-    $("#categories-pagination ul").append(`<li class="page-item"><a class="page-link" href="#page${i}">${i}</a></li>`);
+    $("#categories-pagination ul").append(`<li class="page-item"><a class="page-link" onclick="managePagination(false, ${i});">${i}</a></li>`);
   }
 
-  // Hashtag management
-  managePagination();
-  $(window).on('hashchange', managePagination);
+  showPageAfterImageLoad(".bd-placeholder-img", {numberOfImages: numberOfCards, minimum: 6}, 20);
 }
