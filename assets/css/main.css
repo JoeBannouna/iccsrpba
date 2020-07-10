@@ -1,3 +1,8 @@
+@import url(https://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+html, body {
+  font-family: 'Droid Arabic Kufi', sans-serif;
+}
+
 a {
   cursor: pointer;
 }
@@ -91,6 +96,18 @@ div.loading-page .loading-icon * {
 
 .overflow-x-hidden {
   overflow-x: hidden;
+}
+
+.margin-bottom-0 {
+  margin-bottom: 0 !important;
+}
+
+.line-height-1-5 {
+  line-height: 1.5;
+}
+
+.dark-grey {
+  color: #444;
 }
 
 @media screen and (min-width: 768px) {
@@ -281,5 +298,9 @@ div.main-banner-div .background-darkner div h1 {
   border: solid #999 0.5px;
   border-radius: 3px;
   text-align: left;
+}
+
+.announcement div {
+  background-color: #e1f3df;
 }
 /*# sourceMappingURL=main.css.map */

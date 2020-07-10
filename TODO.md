@@ -1,13 +1,13 @@
 # TOTDOLIST
 
-* Categories and cards
+* Categories and cards <>
 * Paypal payments
 * Login system for admins
-* Announcements page
+* Announcements page <>
 
 <hr>
 
 * Login system
-* Category
-* Card in a category
-* Announcement page
+* Category <>
+* Card in a category <>
+* Announcement page <>

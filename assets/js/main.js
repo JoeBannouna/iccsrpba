@@ -6,7 +6,7 @@ function mainScript(imageLoading) {
   if (typeof activeHeaderLink !== "undefined") $("." + activeHeaderLink).addClass("active");
 
   // Contact button
-  $("#contact-us-button").click(function() {
+  $(".contact-us-button").click(function() {
     $([document.documentElement, document.body]).animate({
         scrollTop: $("#contact-us-form").offset().top
     }, 2000);
@@ -76,17 +76,22 @@ function showPageLoading() {
 }
 
 // Check if images is loaded to show the page
-function showPageAfterImageLoad(selector, {numberOfImages, minimum}, movePixels) {
+function showPageAfterImageLoad(selector, {numberOfImages, minimum}, movePixels, callback) {
   $(selector).one("load", () => {
     imagesLoaded++;
     if (imagesLoaded == numberOfImages || imagesLoaded > minimum) {
       showPageLoading();
       pageLoaded = true;
+      
+      if (typeof callback === "function") {
+        callback();
+      }
+
+      // Hashtag management
+      if (movePixels !== false) {
+        managePagination(movePixels, 1);
+      }
     }
-    
-    // Hashtag management
-    if (movePixels !== false) {
-      managePagination(movePixels, 1);
-    }
+
   });
 }

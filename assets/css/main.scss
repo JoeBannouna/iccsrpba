@@ -1,3 +1,9 @@
+@import url(https://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+
+html, body{
+  font-family: 'Droid Arabic Kufi', sans-serif;
+}
+
 a {
   cursor: pointer;
 }
@@ -58,3 +64,6 @@ div.loading-page {
 
 // Import categories css
 @import 'card';
+
+// Import announcements styles
+@import 'announcements';

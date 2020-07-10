@@ -6,8 +6,8 @@ function pageScript() {
     type: "GET",
     url: "php/category.php?id=" + categoryId,
     success: function (response) {
-
       let category = JSON.parse(response);
+      
       // Category implementing
       $(".cards h1").html(category.name);
     

@@ -54,69 +54,19 @@
       </div>
     </div>
 
-    <br>
-
-    
     <div class="loading-page">
       <div class="loading-icon">
         <div class="ld ld-hourglass ld-spin-fast" style="font-size:64px;color:rgb(82, 166, 218)"></div>
       </div>
-      <div class="container-fluid main-page-core">
-        <h1 class="h2 text-align-center" id="card-title">القيام بدراسات جدوي دولية</h1>
-        <div class="row arabic">
-          <div class="col-sm-6 arabic arabic-text overflow-x-hidden">
-            <article class="blog-post px-3 py-5 p-md-5 ">
-              <!-- <h1 class="h3 font-weight-lighter">المزيد من التفاصيل</h1> -->
-              <br>
-              
-              <div class="blog-post-body">
-                <figure class="blog-banner">
-                    <img class="img-fluid" id="card-img" src="" alt="image">
-                </figure>
-                <p id="card-description"></p>
-              </div>
-            
-            </article>
-          </div>
-          <div class="col-sm-6 card-contact">
-            <div class="blog-post px-3 py-5 p-md-5 arabic arabic-text text-align-center">
-              <p class="h4 font-weight-lighter">طلب الخدمة أو اي أسئلة حولها</p>
-              <br>
-              <form action="php/sendorder.php" method="POST">
-                <div class="form-group">
-                  <input type="text" name="name" class="form-control" placeholder="الاسم بالكامل">
-                </div>
-                <div class="form-group">
-                  <input type="email" name="email" class="form-control" placeholder="الايميل">
-                </div>
-                <div class="form-group">
-                <div class="form-group">
-                  <input type="text" name="order" class="form-control" placeholder="الطلب">
-                </div>
-                  <input type="text" name="subject" class="form-control" placeholder="الموضوع">
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="text" id="card-textarea" rows="3" placeholder=""></textarea>
-                </div>
-                <div class="form-group text-align-right">
-                  <label for="filesInput" class="lead">أي ملفات مرفقة</label>
-                  <input type="file" name="file" id="filesInput" class="form-control-file">
-                </div>
-                <button type="submit" class="btn btn-primary">ارسال</button>
-              </form>
-            </div>
-          </div>
-    
-          <div class="container arabic arabic-text">
-            <div class="alert alert-warning" role="alert">
-              ملاحظة الأسعار بعد دراسة الطلب.
-            </div>
-          </div>
+      <section class="blog-list px-3 py-5 p-md-5">
+        <div class="container-fluid marketing main-page-core">
+          <div class="row categories-span0"></div>
+          <nav aria-label="Categories pagination" class="d-flex justify-content-center width-100" id="categories-pagination">
+            <ul class="pagination"></ul>
+          </nav>
         </div>
-      </div>
+      </section>
     </div>
-    
-    <br>
     
     <section id="contact-us-form"></section>
     
@@ -132,8 +82,8 @@
   <!-- Javascript -->
   <script src="assets/plugins/popper.min.js"></script>
   <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/js/main.js" activeHeaderLink="categoriesPage" id="main-script"></script>
-  <script src="assets/js/card.js"></script>
+  <script src="assets/js/main.js" activeHeaderLink="announcementsPage" id="main-script"></script>
+  <script src="assets/js/announcements.js"></script>
 </body>
 
 </html>
