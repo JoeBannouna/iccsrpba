@@ -2,7 +2,7 @@ function pageScript() {
 
   $.ajax({
     type: "GET",
-    url: "php/announcements.php",
+    url: "/php/announcements.php",
     success: function (response) {
       let announcements = JSON.parse(response);
       // Announcements implementing
@@ -39,6 +39,6 @@ function pageScript() {
 
       showPageLoading();
       managePagination(70, 1);
-    }
+    },
   });
 }

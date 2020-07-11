@@ -1,0 +1,1 @@
+if (typeof CKEDITOR !== "undefined") CKEDITOR.replace( 'editor1' );

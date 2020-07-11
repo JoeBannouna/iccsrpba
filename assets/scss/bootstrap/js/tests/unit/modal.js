@@ -597,7 +597,7 @@ $(function () {
     assert.expect(2)
     var done = assert.async()
 
-    $('<map><area id="test" shape="default" data-toggle="modal" data-target="#modal-test" href="demo.html"/></map>')
+    $('<map><area id="test" shape="default" data-toggle="modal" data-target="#modal-test" href="demo"/></map>')
       .appendTo('#qunit-fixture')
 
     $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"/></div></div>')

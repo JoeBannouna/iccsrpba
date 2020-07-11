@@ -6,8 +6,6 @@ function pageScript() {
     success: function (response) {
       let announcements = JSON.parse(response);
       // Announcements implementing
-      console.log(announcements);
-      let divNumber = 0;
       announcements.map(({name, description, date}) => {
         $(".categories-span0").css("display", "none");
         $(".categories-span0").append(

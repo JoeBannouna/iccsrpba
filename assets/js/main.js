@@ -1,6 +1,9 @@
 // MAIN SCRIPT
 
 function mainScript(imageLoading) {
+
+  if (typeof pageLoaded === "undefined") var pageLoaded = false;
+
   // Highlight active header link
   let activeHeaderLink = $("#main-script").attr("activeHeaderLink")
   if (typeof activeHeaderLink !== "undefined") $("." + activeHeaderLink).addClass("active");

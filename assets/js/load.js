@@ -9,7 +9,7 @@ let servicesDropdown = false;
 function loadContact() {
   $.ajax({
     type: "get",
-    url: "components/contact.html",
+    url: "components/contact",
     success: function (response) {
       $("#contact-us-form").html(response);
       loadCategories();
@@ -58,7 +58,7 @@ function startMain() {
 
 $.ajax({
   type: "get",
-  url: "components/header.html",
+  url: "components/header",
   success: function (response) {
     $(".header.text-center").html(response);
     loadContact();

@@ -2,7 +2,6 @@
     
 use Dotenv\Dotenv;
 
-
 require_once(dirname(__FILE__) . '/vendor/autoload.php');
   
 $dotenv  = Dotenv::createImmutable(dirname(__FILE__));
@@ -10,6 +9,7 @@ $dotenv->load();
 
 define("LOG_PATH", dirname(__FILE__) . "/logs");
 define("DEV_MODE", true);
+define("ROOT_DIR", dirname(__FILE__));
 $logPath = dirname(__FILE__) . "/logs";
 $dateFormatted = date("m/d/Y h:i");
 

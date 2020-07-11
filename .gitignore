@@ -5,3 +5,5 @@
 /images
 /cgi-bin
 /.well-known
+/.env
+/logs

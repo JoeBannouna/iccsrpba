@@ -1,4 +1,4 @@
-[
+<!-- [
   {
     "name": "Announcements title",
     "description": "This is a description",
@@ -9,4 +9,7 @@
     "description": "This is a description",
     "date": "07-09-2020"
   }
-]
+] -->
+
+<?php
+
