@@ -1,4 +1,4 @@
-function pageScript() {
+function pageScript(callback) {
 
   $.ajax({
     type: "GET",
@@ -9,6 +9,8 @@ function pageScript() {
       let numberOfCards = 0;
       let divNumber = 0;
       announcements.map(({name, description, date}, index) => {
+        name = decodeURIComponent(name);
+        description = decodeURIComponent(description);
         if (index % 10 === 0) {
           $(`.categories-span${divNumber}`).after(`<div style="display: none;" class="row categories-span categories-span${divNumber + 1}"></div>`);
           divNumber++;
@@ -39,6 +41,8 @@ function pageScript() {
 
       showPageLoading();
       managePagination(70, 1);
+
+      if (typeof callback === "function") callback();
     },
   });
 }

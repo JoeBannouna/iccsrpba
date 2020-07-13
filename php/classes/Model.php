@@ -13,6 +13,16 @@ class Model extends Dbh {
         return $results;
     }
 
+    public function getAllRows($table, $limit = false) {
+        $limit = ($limit !== false && is_numeric($limit)) ? "LIMIT $limit" : "";
+        $sql = "SELECT * FROM `$table` WHERE 1 ORDER BY `date` DESC $limit;";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute();
+
+        $results = $stmt->fetchAll();
+        return $results;
+    }
+
     public function getUser($valueArr, $fieldArr, $table) {
         $sql = "SELECT * FROM `$table` WHERE `$fieldArr[0]` = ? AND `$fieldArr[1]` = ?";
         $stmt = $this->connect()->prepare($sql);
@@ -63,9 +73,15 @@ class Model extends Dbh {
         }
     }
 
-    public function insertPost($array, $table) {
+    public function insertPost($array, $table, $img = null) {
         // Check the ID is unique
         do $array["id"] = $this->getToken(30); while ($this->getRowsNo($array["id"], "id", $table) > 0);
+
+        // Upload the image and put its URL in the database
+        if ($img !== null) {
+            $upload = $this->uploadImage($img, $table, $array["id"]);
+            if ($upload === false) throw new Exception("Image could not be uploaded!");
+        }
         
         // Create the arrays for the sql statement
         $values = $fields = $valuesReplacements = [];
@@ -74,6 +90,7 @@ class Model extends Dbh {
         $fields = implode(", ", $fields);
         $sql = "INSERT INTO $table($fields) VALUES ($valuesReplacements)";
 
+        // Execute..
         return $this->executeStatement($values, $sql) ? true : false;
     }
 }

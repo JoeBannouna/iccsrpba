@@ -20,7 +20,10 @@ function mainScript(imageLoading) {
     showPageLoading();
   } else {                        // Else wait for a maximum of 7 seconds
     setTimeout(() => {
-      if (!pageLoaded) showPageLoading();
+      if (!pageLoaded) {
+        showPageLoading();
+        console.log("Timer ran out");
+      }
     }, 7000);
   }
 }

@@ -1,10 +1,13 @@
-function pageScript() {
+function pageScript(cat) {
   isCategoriesPage = true;
 
   // Category implementing
   let numberOfCards = 0;
   let divNumber = 0;
+  pixels = (typeof cat === "object") ? false : 20;
+  (pixels === false) ? categories = cat : "" ;
   categories.map(({id, name, imgurl}, index) => {
+    name = decodeURIComponent(name);
     if (index % 6 === 0) {
       $(`.categories-span${divNumber}`).after(`<div style="display: none;" class="row categories-span categories-span${divNumber + 1}"></div>`);
       divNumber++;
@@ -29,5 +32,5 @@ function pageScript() {
     $("#categories-pagination ul").append(`<li class="page-item"><a class="page-link" onclick="managePagination(false, ${i});">${i}</a></li>`);
   }
 
-  showPageAfterImageLoad(".bd-placeholder-img", {numberOfImages: numberOfCards, minimum: 6}, 20);
+  showPageAfterImageLoad(".bd-placeholder-img", {numberOfImages: numberOfCards, minimum: 6}, pixels);
 }

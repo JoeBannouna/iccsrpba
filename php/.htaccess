@@ -1,0 +1,9 @@
+ErrorDocument 404 /error.html
+
+IndexIgnore *
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteCond %{SERVER_PORT} 80 
+# RewriteRule ^(.*)$ https://www.iccsrpba.com/$1 [R,L]

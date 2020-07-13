@@ -7,6 +7,9 @@ function pageScript() {
       let announcements = JSON.parse(response);
       // Announcements implementing
       announcements.map(({name, description, date}) => {
+        name = decodeURIComponent(name);
+        description = decodeURIComponent(description);
+        
         $(".categories-span0").css("display", "none");
         $(".categories-span0").append(
       `<div class="card w-100 alert-success announcement">

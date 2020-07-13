@@ -32,7 +32,8 @@ function startMain() {
   $(function () {
     // Header drop down functionality
     let number = categories.length - 1;
-    for (let i = 0; i < 3; i++) {
+    let max = (categories.length > 2) ? 3 : categories.length;
+    for (let i = 0; i < max; i++) {
       dropDownItems.push(categories[number]);
       number--;
     }

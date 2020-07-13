@@ -15,4 +15,27 @@ class Core extends Logs {
 
     return $token;
   }
+
+  // Uplaoding images
+  protected function uploadImage($files, $directory, $filename) {
+    // Some data about the file
+    $name = $files['file']['name'];
+    $tmp_name = $files['file']['tmp_name'];
+    $ext = pathinfo($name, PATHINFO_EXTENSION);
+    $extentions = ["jpg", "jpeg", "png", "gif", "raw", "JPG", "JPEG", "PNG", "GIF", "RAW"];
+
+    if (in_array($ext, $extentions)) {      // Verify extenstions
+      if (isset($name)) {
+        if (!empty($name)) {
+          $location = ROOT_DIR . "/images/$directory/";
+      
+          // Save the file and return the extention
+          if (move_uploaded_file($tmp_name, $location.$filename.".png")) {
+              return $location.$filename.".png";
+          }
+        }
+      }
+    }
+    return false;
+  }
 }

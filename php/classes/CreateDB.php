@@ -41,17 +41,17 @@ class CreateDB extends Model {
   
   // Create the announcements table
   private function createAnnouncementsTable($dbName) {
-    $this->executeStatement([], "CREATE TABLE `$dbName`.`announcements` ( `id` VARCHAR(31) NOT NULL , `title` VARCHAR(200) NOT NULL , `text` TEXT NOT NULL , `date` INT NOT NULL ,  PRIMARY KEY (`id`) ) ENGINE = InnoDB;");
+    $this->executeStatement([], "CREATE TABLE `$dbName`.`announcements` ( `id` VARCHAR(31) NOT NULL , `name` VARCHAR(200) NOT NULL , `description` TEXT NOT NULL , `date` INT NOT NULL ,  PRIMARY KEY (`id`) ) ENGINE = InnoDB;");
   }
   
   // Create the categories table
   private function createCategoriesTable($dbName) {
-    $this->executeStatement([], "CREATE TABLE `$dbName`.`categories` ( `id` VARCHAR(31) NOT NULL , `title` VARCHAR(200) NOT NULL , `imgurl` VARCHAR(400) NOT NULL ,  PRIMARY KEY (`id`) ) ENGINE = InnoDB;");
+    $this->executeStatement([], "CREATE TABLE `$dbName`.`categories` ( `id` VARCHAR(31) NOT NULL , `name` VARCHAR(200) NOT NULL , `date` INT NOT NULL ,  PRIMARY KEY (`id`) ) ENGINE = InnoDB;");
   }
   
   // Create the services table
   private function createServicesTable($dbName) {
-    $this->executeStatement([], "CREATE TABLE `$dbName`.`services` ( `id` VARCHAR(31) NOT NULL , `cat_id` VARCHAR(300) NOT NULL , `title` VARCHAR(200) NOT NULL , `description` TEXT NOT NULL , `imgurl` VARCHAR(400) NOT NULL  , `textarea` VARCHAR(50) NOT NULL ,  PRIMARY KEY (`id`) ) ENGINE = InnoDB;");
+    $this->executeStatement([], "CREATE TABLE `$dbName`.`services` ( `id` VARCHAR(31) NOT NULL , `cat_id` VARCHAR(300) NOT NULL , `title` VARCHAR(200) NOT NULL , `description` TEXT NOT NULL , `textarea` VARCHAR(50) NOT NULL , `date` INT NOT NULL ,  PRIMARY KEY (`id`) ) ENGINE = InnoDB;");
   }
   
   // Create the users table

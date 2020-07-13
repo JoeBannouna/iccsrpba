@@ -1,3 +1,11 @@
+<?php
+
+include '../php/autoload.php';
+include '../php/core.php';
+
+$loggedin ? "" : header("Location: sign-in") && exit;
+
+?>
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
@@ -118,7 +126,12 @@
 
     $(function () {
       mainScript();
-      pageScript();
+      const callback = function() {
+        $([document.documentElement, document.body]).animate({
+          scrollTop: 0
+        }, 1);
+      }
+      pageScript(callback);
     });
   </script>
 </body>

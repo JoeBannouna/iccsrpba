@@ -5,8 +5,12 @@ require 'core.php';
 
 if ($loggedin) {
 
+  foreach ($_POST as $key => $value) {
+    $_POST[$key] = rawurlencode($value);
+  }
+
   $model = new Model();
-  $model->insertPost(["id" => "", "title" => $_POST["title"], "text" => $_POST["text"], "date" => time()], "announcements") 
+  $model->insertPost(["id" => "", "name" => $_POST["title"], "description" => $_POST["text"], "date" => time()], "announcements") 
   ? header("Location: ../dashboard/announcements?create=success") 
   : header("Location: ../dashboard/announcements?create=error");
 
@@ -23,3 +27,5 @@ if ($loggedin) {
   //   }
   // }
 }
+
+header("Location: ../dashboard/announcements?create=error");
