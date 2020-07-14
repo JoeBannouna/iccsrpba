@@ -84,10 +84,21 @@ function showPageLoading() {
 // Check if images is loaded to show the page
 function showPageAfterImageLoad(selector, {numberOfImages, minimum}, movePixels, callback) {
   $(selector).one("load", () => {
+    imageLodingFunc();
+  });
+  
+  $(selector).one("error", () => {
+    imageLodingFunc();
+  });
+
+  const imageLodingFunc = () =>  {
     imagesLoaded++;
+    console.log(numberOfImages);
+    console.log(imagesLoaded);
     if (imagesLoaded == numberOfImages || imagesLoaded > minimum) {
       showPageLoading();
       pageLoaded = true;
+      
       
       if (typeof callback === "function") {
         callback();
@@ -98,6 +109,6 @@ function showPageAfterImageLoad(selector, {numberOfImages, minimum}, movePixels,
         managePagination(movePixels, 1);
       }
     }
+  }
 
-  });
 }

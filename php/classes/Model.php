@@ -4,8 +4,9 @@ class Model extends Dbh {
     // THE MODEL (The only class which interacts with the database)
 
     // Select a user from the database based on a certain field
-    public function getRows($value, $field, $table) {
-        $sql = "SELECT * FROM `$table` WHERE `$field` = ?";
+    public function getRows($value, $field, $table, $limit = false) {
+    $limit = ($limit !== false && is_numeric($limit)) ? "LIMIT $limit" : "";
+        $sql = "SELECT * FROM `$table` WHERE `$field` = ? $limit";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$value]);
 
@@ -77,10 +78,13 @@ class Model extends Dbh {
         // Check the ID is unique
         do $array["id"] = $this->getToken(30); while ($this->getRowsNo($array["id"], "id", $table) > 0);
 
+        $this->log($array["id"], "logclass");
+
         // Upload the image and put its URL in the database
         if ($img !== null) {
             $upload = $this->uploadImage($img, $table, $array["id"]);
             if ($upload === false) throw new Exception("Image could not be uploaded!");
+            $this->log("Image", "logclass");
         }
         
         // Create the arrays for the sql statement
@@ -89,6 +93,9 @@ class Model extends Dbh {
         $valuesReplacements = implode(", ", $valuesReplacements);
         $fields = implode(", ", $fields);
         $sql = "INSERT INTO $table($fields) VALUES ($valuesReplacements)";
+
+        $this->log($sql, "logclass");
+        $this->log($values, "logclass");
 
         // Execute..
         return $this->executeStatement($values, $sql) ? true : false;

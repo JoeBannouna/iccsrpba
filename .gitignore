@@ -7,3 +7,4 @@
 /.well-known
 /.env
 /logs
+/php/tests.php

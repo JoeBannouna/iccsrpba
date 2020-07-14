@@ -27,5 +27,3 @@ if ($loggedin) {
   //   }
   // }
 }
-
-header("Location: ../dashboard/announcements?create=error");

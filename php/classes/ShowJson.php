@@ -2,6 +2,31 @@
 
 class ShowJson extends Model {
 
+  protected function LoopServices($services) {
+    $servicesArr = [];
+
+    // PRINT THE SERVICES
+    foreach ($services as $service) {
+      $attributesArr = [];
+
+      // Print each property in an object-like format
+      foreach ($service as $key => $attribute) {
+      $property = '"' . $key . '": "' . $attribute . '"';
+        array_push($attributesArr, $property);
+      }
+      // Add image property manually..
+      $imageProperty = '"imgurl": "/images/services/' . $service["id"] . '.png"';
+      array_push($attributesArr, $imageProperty);
+      
+      // Implode the objects
+      $serviceJson = "{" . implode(", ", $attributesArr) . "}";
+      array_push($servicesArr, $serviceJson);
+    }
+
+    $servicesJson = "[" . implode(",", $servicesArr) . "]";
+    return $servicesJson;
+  }
+
   public function showAnnouncements($limit = false) {
     // Get all rows from the database
     $announcements = $this->getAllRows("announcements", $limit);
@@ -52,4 +77,47 @@ class ShowJson extends Model {
     print_r($categoriesJson);
     $this->log($categoriesJson);
   }
+
+  public function showCategory($catId, $limit = false) {
+    // Get all rows from the database
+    $services = $this->getRows($catId, "cat_id", "services", $limit);
+    $servicesJson = $this->LoopServices($services);
+
+    // PRINT THE CATEGORY
+    @$categoryRow = $this->getRows($catId, "id", "categories")[0];
+    if ($categoryRow === null) throw new Exception("Category not found", 404);
+    $category = ["id" => $categoryRow["id"], "name" => $categoryRow["name"], "imgurl" => $categoryRow["id"] . ".png"];
+    $attributesArr = [];
+
+    // Print each property in an object-like format
+    foreach ($category as $key => $attribute) {
+    $property = '"' . $key . '": "' . $attribute . '"';
+      array_push($attributesArr, $property);
+    }
+    // Add service property manually..
+    $servicesProperty = '"services": ' . $servicesJson;
+    array_push($attributesArr, $servicesProperty);
+    
+    // Implode the objects
+    $categoryJson = "{" . implode(", ", $attributesArr) . "}";
+
+    print_r($categoryJson);
+    $this->log($categoryJson);
+  }
+
+  public function showServices($limit = false, $catId = false) {
+    
+    if ($catId !== false) {                   // Get services from a certan category
+      $services = $this->getRows($catId, "cat_id", "services", $limit);
+      $servicesJson = $this->LoopServices($services);
+
+      $this->log($servicesJson);
+    } elseif ($catId === false) {             // Get ALL services
+      $services = $this->getAllRows("services", $limit);
+      $servicesJson = $this->LoopServices($services);
+    }
+    
+    print_r($servicesJson);
+    $this->log($servicesJson);
+ }
 }

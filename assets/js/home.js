@@ -4,6 +4,7 @@ function pageScript() {
     type: "GET",
     url: "php/announcements.php?limit=3",
     success: function (response) {
+      console.log(response);
       let announcements = JSON.parse(response);
       // Announcements implementing
       announcements.map(({name, description, date}) => {
@@ -25,6 +26,7 @@ function pageScript() {
       })
 
       dropDownItems.map(({id, name, imgurl}) => {
+        name = decodeURIComponent(name);
         $(`.categories-span`).append(
         `<div class="col-md-4 text-align-center">
           <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="${imgurl}">

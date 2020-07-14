@@ -1,21 +1,18 @@
 function pageScript() {
-  isCategoriesPage = true;
+  let categoryId = (findGetParameter("cat_id") !== null) ? "&cat_id=" + findGetParameter("cat_id") : "";
 
-  let categoryId = findGetParameter("id");
   $.ajax({
     type: "GET",
-    url: "php/category.php?id=" + categoryId,
+    url: `/php/services.php?services=1${categoryId}`,
     success: function (response) {
-      let category = JSON.parse(response);
-      category.name = decodeURIComponent(category.name);
-      // Category implementing
-      $(".cards h1").html(category.name);
+      console.log(response);
+      let services = JSON.parse(response);
+      // category.name = decodeURIComponent(category.name);
     
       let numberOfCards = 0;
 
       let divNumber = 0;
-      console.log(category.services);
-      category.services.map(({id, title, description, imgurl}, index) => {
+      services.map(({id, title, description, imgurl}, index) => {
         title = decodeURIComponent(title);
         description = decodeURIComponent(description);
         imgurl = decodeURIComponent(imgurl);
@@ -40,15 +37,15 @@ function pageScript() {
       })
 
       // Pagination script
-      let numberOfPages = Math.ceil(category.services.length / 3) ;
+      let numberOfPages = Math.ceil(services.length / 3);
       let i = 0;
       while (i < numberOfPages) {
         i++;
         $("#categories-pagination ul").append(`<li class="page-item"><a class="page-link" onclick="managePagination(70, ${i})">${i}</a></li>`);
       }
  
-      showPageAfterImageLoad(".card-img-top", {numberOfImages: numberOfCards, minimum: 3}, 70);
-      managePagination(70, 1);
+      showPageAfterImageLoad(".card-img-top", {numberOfImages: numberOfCards, minimum: 3}, false);
+      managePagination("NoScroll", 1);
     }
   });
 }

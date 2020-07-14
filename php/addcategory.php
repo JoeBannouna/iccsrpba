@@ -21,7 +21,7 @@ if ($loggedin) {
       : header("Location: ../dashboard/categories?create=error") && exit;
   } catch (\Exception $e) {
     $logs = new Logs();
-    $logs->log($e->getMessage(), "logclasses");
+    $logs->log("Err: " . $e->getMessage(), "logclasses");
     header("Location: ../dashboard/categories?create=imageerror");
     exit;
   }
