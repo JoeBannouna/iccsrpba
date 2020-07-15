@@ -37,7 +37,7 @@ function startMain() {
       dropDownItems.push(categories[number]);
       number++;
     }
-    dropDownItems.map(({id, name}) => $(".span-services-dropdown span").append(`<li class="nav-item"><a class="nav-link" href="category.html?id=${id}"><i class="fas fa-arrow-left fa-fw mr-2"></i> &nbsp;${name}</a></li>`));
+    dropDownItems.map(({id, name}) => $(".span-services-dropdown span").append(`<li class="nav-item"><a class="nav-link" href="category.html?id=${id}"><i class="fas fa-arrow-left fa-fw mr-2"></i> &nbsp;${decodeURIComponent(name)}</a></li>`));
     
     $(".services-dropdown").on("click", () => {
       servicesDropdown = servicesDropdown ? false : true;

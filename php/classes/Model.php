@@ -83,8 +83,9 @@ class Model extends Dbh {
         // Upload the image and put its URL in the database
         if ($img !== null) {
             $upload = $this->uploadImage($img, $table, $array["id"]);
+            $this->log("IMAGE UPLAOD STARTED", "logclass");
             if ($upload === false) throw new Exception("Image could not be uploaded!");
-            $this->log("Image", "logclass");
+            $this->log("IMAGE UPLAOD FINISHED", "logclass");
         }
         
         // Create the arrays for the sql statement
@@ -98,6 +99,6 @@ class Model extends Dbh {
         $this->log($values, "logclass");
 
         // Execute..
-        return $this->executeStatement($values, $sql) ? true : false;
+        if ($this->executeStatement($values, $sql)) return true; else throw new Exception("Could not upload to database!");
     }
 }

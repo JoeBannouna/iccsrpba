@@ -28,7 +28,13 @@ class Core extends Logs {
       if (isset($name)) {
         if (!empty($name)) {
           $location = ROOT_DIR . "/images/$directory/";
-      
+          
+          // Check if directory exists and created
+          if (!file_exists($location."test.log")) {
+            mkdir(ROOT_DIR . "/images/$directory", 0755);
+            file_put_contents($location."test.log", "File and Directory has been created");
+          }
+
           // Save the file and return the extention
           if (move_uploaded_file($tmp_name, $location.$filename.".png")) {
               return $location.$filename.".png";

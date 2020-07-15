@@ -1,7 +1,7 @@
 <?php
 
-include '../php/autoload.php';
-include '../php/core.php';
+require_once '../php/autoload.php';
+require_once '../php/core.php';
 
 $loggedin ? "" : header("Location: sign-in") && exit;
 
@@ -30,6 +30,9 @@ $loggedin ? "" : header("Location: sign-in") && exit;
 
   <!-- Load JQuery -->
   <script src="/assets/plugins/jquery-3.3.1.min.js"></script>
+
+  <!-- Script for the text editor -->
+  <script src="//cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
 
   <!-- Some small styles for the dashboard -->
   <style>
@@ -65,18 +68,57 @@ $loggedin ? "" : header("Location: sign-in") && exit;
           <spn id="create" class="arabic-text"></spn>
           <h2 class="font-weight-lighter form-title">إنشاء خدمة..</h2>
           <br>
-          <form action="../php/addcategory.php" method="POST" enctype="multipart/form-data">
+          <form action="../php/addservice.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
               <div class="form-group">
                 <label for="exampleInputtext1">العنوان</label>
                 <input type="text" name="title" class="form-control" required id="exampleInputtext1" aria-describedby="textHelp">
               </div>
+              <label for="editor1">الوصف</label>
+              <textarea name="text" class="form-control" id="editor1" rows="3"></textarea>
             </div>
             <div class="form-group">
               <label for="exampleFormControlFile1">تحميل صورة</label>
               <input type="file" name="file" required class="form-control-file" id="exampleFormControlFile1">
             </div>
-            <div class="d-flex justify-content-center">
+            <select name="category" class="form-control form-control-lg" id="idCatSelect" style="padding: 0;margin-right: 0;padding-right: 10px;">
+            <option value="empty">القسم</option>
+              <?php 
+                ob_start();
+                include '../php/categories.php'; 
+                $content = ob_get_contents();
+                ob_end_clean();
+                $json = json_decode($content, true);
+                foreach ($json as $key => $value) {
+                  list("id" => $id, "name" => $name) = $value;
+                  $name = rawurldecode($name);
+                  print_r("<option value=\"$id\">$name</option>");
+                  
+                }
+              ?>
+            </select>
+            <div>
+              <h2>تفاصيل الطلب
+              </h2>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="الاسم بالكامل" value="الاسم بالكامل" readonly>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="الايميل" value="الايميل" readonly>
+              </div>
+              <div class="form-group">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="الطلب" value="الطلب" readonly>
+              </div>
+                <input type="text" class="form-control" placeholder="الموضوع" value="الموضوع" readonly>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="textarea" id="card-textarea" rows="3" placeholder="نص الايميل" value="نص الايميل">نص الايميل</textarea>
+              </div>
+              <div class="form-group text-align-right">
+                <label for="filesInput" class="lead">أي ملفات مرفقة</label>
+                <input type="file" readonly disabled id="filesInput" class="form-control-file">
+              </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
           </form>
@@ -114,6 +156,7 @@ $loggedin ? "" : header("Location: sign-in") && exit;
       if (findGetParameter("create") === "success") $("#create").html(`<div class="alert alert-success" role="alert">تم إنشاؤه بنجاح</div>`);
       if (findGetParameter("create") === "error") $("#create").html(`<div class="alert alert-danger" role="alert">حدث خطأ ما</div>`);
       if (findGetParameter("create") === "imageerror") $("#create").html(`<div class="alert alert-danger" role="alert">حدث خطأ أثناء تحميل الصورة</div>`);
+      if (findGetParameter("create") === "chooseerror") $("#create").html(`<div class="alert alert-danger" role="alert">رجاء اختر القسم لهذه الخدمة</div>`);
     }
     if (findGetParameter("delete") !== null) {
       $("#inputEmail").val(findGetParameter("user"));

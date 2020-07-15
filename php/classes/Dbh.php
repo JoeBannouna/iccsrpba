@@ -18,6 +18,7 @@ class Dbh extends Core {
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->name;
         $pdo = new PDO($dsn, $this->user, $this->pass);
         $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $pdo->setAttribute(PDO::ERRMODE_EXCEPTION, true);
         return $pdo;
     }
     

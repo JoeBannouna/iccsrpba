@@ -1,9 +1,7 @@
 <?php
 
-require 'autoload.php';
-require 'core.php';
-
-header("Content-Type: text/plain");
+require_once 'autoload.php';
+require_once 'core.php';
 
 $logs = new Logs();
 
