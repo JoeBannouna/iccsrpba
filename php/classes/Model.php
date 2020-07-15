@@ -83,9 +83,7 @@ class Model extends Dbh {
         // Upload the image and put its URL in the database
         if ($img !== null) {
             $upload = $this->uploadImage($img, $table, $array["id"]);
-            $this->log("IMAGE UPLAOD STARTED", "logclass");
             if ($upload === false) throw new Exception("Image could not be uploaded!");
-            $this->log("IMAGE UPLAOD FINISHED", "logclass");
         }
         
         // Create the arrays for the sql statement
@@ -101,4 +99,25 @@ class Model extends Dbh {
         // Execute..
         if ($this->executeStatement($values, $sql)) return true; else throw new Exception("Could not upload to database!");
     }
+
+    public function deleteCategory($id) {
+        $sql = "DELETE FROM services WHERE cat_id = ?";
+        if ($this->executeStatement([$id], $sql)) $servicesDeleted = true; else throw new Exception("Could not delete category services!");
+        
+        if ($servicesDeleted) {
+            $sql = "DELETE FROM categories WHERE id = ?";
+            if ($this->executeStatement([$id], $sql)) return true; else throw new Exception("Could not delete category!");
+        }
+    }
+    
+    public function deleteService($id) {
+        $sql = "DELETE FROM services WHERE id = ?";
+        if ($this->executeStatement([$id], $sql)) $servicesDeleted = true; else throw new Exception("Could not delete services!");
+        
+        if ($servicesDeleted) {
+            $sql = "DELETE FROM categories WHERE id = ?";
+            if ($this->executeStatement([$id], $sql)) return true; else throw new Exception("Could not delete category!");
+        }
+    }
+
 }

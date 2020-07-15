@@ -93,13 +93,11 @@ $loggedin ? "" : header("Location: sign-in") && exit;
                   list("id" => $id, "name" => $name) = $value;
                   $name = rawurldecode($name);
                   print_r("<option value=\"$id\">$name</option>");
-                  
                 }
               ?>
             </select>
             <div>
-              <h2>تفاصيل الطلب
-              </h2>
+              <h2>تفاصيل الطلب</h2>
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="الاسم بالكامل" value="الاسم بالكامل" readonly>
               </div>

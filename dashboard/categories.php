@@ -115,8 +115,11 @@ $loggedin ? "" : header("Location: sign-in") && exit;
       if (findGetParameter("create") === "error") $("#create").html(`<div class="alert alert-danger" role="alert">حدث خطأ ما</div>`);
       if (findGetParameter("create") === "imageerror") $("#create").html(`<div class="alert alert-danger" role="alert">حدث خطأ أثناء تحميل الصورة</div>`);
     }
+    
     if (findGetParameter("delete") !== null) {
-      $("#inputEmail").val(findGetParameter("user"));
+      if (findGetParameter("delete") === "success") $("#create").html(`<div class="alert alert-success" role="alert">تم الحذف بنجاح </div>`);
+      if (findGetParameter("delete") === "error") $("#create").html(`<div class="alert alert-danger" role="alert">حدث خطأ </div>`);
+      else $("#inputEmail").val(findGetParameter("user"));
     }
 
     if (findGetParameter("remember") !== null) {
