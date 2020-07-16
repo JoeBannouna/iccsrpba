@@ -100,6 +100,11 @@ class Model extends Dbh {
         if ($this->executeStatement($values, $sql)) return true; else throw new Exception("Could not upload to database!");
     }
 
+    public function deleteAnnouncement($id) {
+        $sql = "DELETE FROM announcements WHERE id = ?";
+        if ($this->executeStatement([$id], $sql)) return true; else throw new Exception("Could not delete announcement!");
+    }
+
     public function deleteCategory($id) {
         $sql = "DELETE FROM services WHERE cat_id = ?";
         if ($this->executeStatement([$id], $sql)) $servicesDeleted = true; else throw new Exception("Could not delete category services!");
@@ -112,12 +117,7 @@ class Model extends Dbh {
     
     public function deleteService($id) {
         $sql = "DELETE FROM services WHERE id = ?";
-        if ($this->executeStatement([$id], $sql)) $servicesDeleted = true; else throw new Exception("Could not delete services!");
-        
-        if ($servicesDeleted) {
-            $sql = "DELETE FROM categories WHERE id = ?";
-            if ($this->executeStatement([$id], $sql)) return true; else throw new Exception("Could not delete category!");
-        }
+        if ($this->executeStatement([$id], $sql)) return true; else throw new Exception("Could not delete service!");
     }
 
 }

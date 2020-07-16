@@ -132,7 +132,7 @@ $loggedin ? "" : header("Location: sign-in") && exit;
       <div class="ld ld-hourglass ld-spin-fast" style="font-size:64px;color:rgb(82, 166, 218)"></div>
     </div>
     <section class="blog-list px-3 py-5 p-md-5">
-      <div class="container-fluid marketing main-page-core">
+      <div class="container marketing main-page-core">
         <div class="row categories-span0"></div>
         <nav aria-label="Categories pagination" class="d-flex justify-content-center width-100" id="categories-pagination">
           <ul class="pagination"></ul>
@@ -157,6 +157,8 @@ $loggedin ? "" : header("Location: sign-in") && exit;
       if (findGetParameter("create") === "chooseerror") $("#create").html(`<div class="alert alert-danger" role="alert">رجاء اختر القسم لهذه الخدمة</div>`);
     }
     if (findGetParameter("delete") !== null) {
+      if (findGetParameter("delete") === "success") $("#create").html(`<div class="alert alert-success" role="alert">تم الحذف بنجاح </div>`);
+      if (findGetParameter("delete") === "error") $("#create").html(`<div class="alert alert-danger" role="alert">حدث خطأ </div>`);
       $("#inputEmail").val(findGetParameter("user"));
     }
 

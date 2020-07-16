@@ -7,16 +7,16 @@
   <div class="collapse navbar-collapse arabic-text arabic" id="navbarsExampleDefault">
     <hr>
     <ul class="navbar-nav mr-auto d-flex width-80">
-      <li class="nav-item <?php echo @$index; ?>">
+      <li class="nav-item <?php echo (isset($index) ? $index : ""); ?>">
         <a class="nav-link" href="/dashboard/">لوحة التحكم <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item <?php echo @$announcements; ?>">
+      <li class="nav-item <?php echo (isset($announcements) ? $announcements : ""); ?>">
         <a class="nav-link" href="announcements">الاخبار</a>
       </li>
-      <li class="nav-item <?php echo @$categories; ?>">
+      <li class="nav-item <?php echo (isset($categories) ? $categories : ""); ?>">
         <a class="nav-link" href="categories">الاقسام</a>
       </li>
-      <li class="nav-item <?php echo @$services; ?>">
+      <li class="nav-item <?php echo (isset($services) ? $services : ""); ?>">
         <a class="nav-link" href="cards">الخدمات</a>
       </li>
       <div class="col-sm-3"></div>

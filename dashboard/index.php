@@ -60,7 +60,6 @@ $loggedin ? "" : header("Location: sign-in") && exit;
 <body>
 
   <?php $index = 'active'; include 'header.php'; ?>
-  
     <div class="container">
       <h1 class="font-weight-lighter d-flex justify-content-center">ماذا تريد ان تفعل؟</h1>
       <!-- Example row of columns -->

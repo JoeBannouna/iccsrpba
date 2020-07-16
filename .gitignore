@@ -9,3 +9,4 @@
 /.env
 /logs
 /php/tests.php
+/info.php

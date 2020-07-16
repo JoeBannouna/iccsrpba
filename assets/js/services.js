@@ -23,7 +23,28 @@ function pageScript() {
           <div class="card-body">
             <h5 class="card-title">${title} </h5>
             <p class="card-text">${description}</p>
-            <a href="card.html?id=${id}" class="btn btn-primary">المزيد من التفاصيل</a>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#index${index}">حذف</button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="index${index}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-*-center" id="exampleModalLabel">هل انت متأكد؟</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                  هل تريد حذف هذا القسم
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>
+                    <form action="../php/services.php" method="POST"><input name="mode" hidden value="DELETE"><input name="id" hidden value="${id}"><button type="submit" class="btn btn-danger">حذف</button></form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>`
