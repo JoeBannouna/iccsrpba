@@ -24,7 +24,7 @@ function mainScript(imageLoading) {
         showPageLoading();
         console.log("Timer ran out");
       }
-    }, 7000);
+    }, 4000);
   }
 }
 
@@ -93,12 +93,9 @@ function showPageAfterImageLoad(selector, {numberOfImages, minimum}, movePixels,
 
   const imageLodingFunc = () =>  {
     imagesLoaded++;
-    console.log(numberOfImages);
-    console.log(imagesLoaded);
     if (imagesLoaded == numberOfImages || imagesLoaded > minimum) {
       showPageLoading();
       pageLoaded = true;
-      
       
       if (typeof callback === "function") {
         callback();

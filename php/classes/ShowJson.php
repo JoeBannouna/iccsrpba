@@ -11,7 +11,10 @@ class ShowJson extends Model {
 
       // Print each property in an object-like format
       foreach ($service as $key => $attribute) {
-      $property = '"' . $key . '": "' . $attribute . '"';
+        $attribute = preg_replace("/\"/", "&quot;", $attribute);
+        $attribute = preg_replace("/\\\/", "&#92;", $attribute);
+        $attribute = preg_replace("/\r|\n/", "", $attribute);
+        $property = '"' . $key . '": "' . $attribute . '"';
         array_push($attributesArr, $property);
       }
       // Add image property manually..
@@ -40,7 +43,10 @@ class ShowJson extends Model {
 
       // Print each property in an object-like format
       foreach ($announcement as $key => $attribute) {
-      $property = '"' . $key . '": "' . $attribute . '"';
+        $attribute = preg_replace("/\"/", "&quot;", $attribute);
+        $attribute = preg_replace("/\\\/", "&#92;", $attribute);
+        $attribute = preg_replace("/\r|\n/", "", $attribute);
+        $property = '"' . $key . '": "' . $attribute . '"';
         array_push($attributesArr, $property);
       }
       $announcementJson = "{" . implode(", ", $attributesArr) . "}";
@@ -62,7 +68,10 @@ class ShowJson extends Model {
 
       // Print each property in an object-like format
       foreach ($category as $key => $attribute) {
-      $property = '"' . $key . '": "' . $attribute . '"';
+        $attribute = preg_replace("/\"/", "&quot;", $attribute);
+        $attribute = preg_replace("/\\\/", "&#92;", $attribute);
+        $attribute = preg_replace("/\r|\n/", "", $attribute);
+        $property = '"' . $key . '": "' . $attribute . '"';
         array_push($attributesArr, $property);
       }
       // Add image property manually..
@@ -91,7 +100,10 @@ class ShowJson extends Model {
 
     // Print each property in an object-like format
     foreach ($category as $key => $attribute) {
-    $property = '"' . $key . '": "' . $attribute . '"';
+      $attribute = preg_replace("/\"/", "&quot;", $attribute);
+      $attribute = preg_replace("/\\\/", "&#92;", $attribute);
+      $attribute = preg_replace("/\r|\n/", "", $attribute);
+      $property = '"' . $key . '": "' . $attribute . '"';
       array_push($attributesArr, $property);
     }
     // Add service property manually..

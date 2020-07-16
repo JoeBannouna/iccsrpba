@@ -7,7 +7,6 @@ function pageScript() {
     url: "php/category.php?id=" + categoryId,
     success: function (response) {
       let category = JSON.parse(response);
-      category.name = decodeURIComponent(category.name);
       // Category implementing
       $(".cards h1").html(category.name);
     
@@ -16,10 +15,6 @@ function pageScript() {
       let divNumber = 0;
       console.log(category.services);
       category.services.map(({id, title, description, imgurl}, index) => {
-        title = decodeURIComponent(title);
-        description = decodeURIComponent(description);
-        imgurl = decodeURIComponent(imgurl);
-
         if (index % 3 === 0) {
           $(`.categories-span${divNumber}`).after(`<div style="display: none;" class="row categories-span categories-span${divNumber + 1}"></div>`);
           divNumber++;

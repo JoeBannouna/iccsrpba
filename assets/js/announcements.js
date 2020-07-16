@@ -9,8 +9,6 @@ function pageScript(callback) {
       let numberOfCards = 0;
       let divNumber = 0;
       announcements.map(({name, description, date}, index) => {
-        name = decodeURIComponent(name);
-        description = decodeURIComponent(description);
         if (index % 10 === 0) {
           $(`.categories-span${divNumber}`).after(`<div style="display: none;" class="row categories-span categories-span${divNumber + 1}"></div>`);
           divNumber++;
@@ -19,14 +17,13 @@ function pageScript(callback) {
       `
       <div class="card w-100 alert-success announcement">
         <div class="card-body margin-bottom-0">
-        <h2 class="display-4 card-title text-center"><small><small>${name}</small></small></h2>
-        <p class="h5 card-text">${description}</p>
-        <div class="margin-bottom-0">
-          <h6 class="font-weight-lighter d-flex justify-content-right">${date}</h6>
+          <h2 class="display-4 card-title text-center"><small><small>${name}</small></small></h2>
+          <p class="h5 card-text">${description}</p>
+          <div class="margin-bottom-0">
+            <h6 class="font-weight-lighter d-flex justify-content-right">${date}</h6>
+          </div>
         </div>
-      </div>
-      
-        </div>`
+      </div>`
       )
       numberOfCards++;
       })

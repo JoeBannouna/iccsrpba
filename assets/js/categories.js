@@ -7,7 +7,6 @@ function pageScript(cat) {
   pixels = (typeof cat === "object") ? false : 20;
   (pixels === false) ? categories = cat : "" ;
   categories.map(({id, name, imgurl}, index) => {
-    name = decodeURIComponent(name);
     if (index % 6 === 0) {
       $(`.categories-span${divNumber}`).after(`<div style="display: none;" class="row categories-span categories-span${divNumber + 1}"></div>`);
       divNumber++;

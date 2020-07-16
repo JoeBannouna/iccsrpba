@@ -7,10 +7,10 @@ if ($loggedin) {
 
   $core = new Core();
 
-  // Encode the output to be able to be put in the database
-  foreach ($_POST as $key => $value) {
-    $_POST[$key] = rawurlencode($value);
-  }
+  // // Encode the output to be able to be put in the database
+  // foreach ($_POST as $key => $value) {
+  //   $_POST[$key] = rawurlencode($value);
+  // }
 
   if ($_POST["category"] === "empty") header("Location: ../dashboard/cards?create=chooseerror") && exit;
   

@@ -7,16 +7,11 @@ function pageScript() {
     success: function (response) {
       console.log(response);
       let services = JSON.parse(response);
-      // category.name = decodeURIComponent(category.name);
     
       let numberOfCards = 0;
 
       let divNumber = 0;
       services.map(({id, title, description, imgurl}, index) => {
-        title = decodeURIComponent(title);
-        description = decodeURIComponent(description);
-        imgurl = decodeURIComponent(imgurl);
-
         if (index % 3 === 0) {
           $(`.categories-span${divNumber}`).after(`<div style="display: none;" class="row categories-span categories-span${divNumber + 1}"></div>`);
           divNumber++;

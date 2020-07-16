@@ -91,7 +91,7 @@ $loggedin ? "" : header("Location: sign-in") && exit;
                 $json = json_decode($content, true);
                 foreach ($json as $key => $value) {
                   list("id" => $id, "name" => $name) = $value;
-                  $name = rawurldecode($name);
+                  // $name = rawurldecode($name);
                   print_r("<option value=\"$id\">$name</option>");
                 }
               ?>
