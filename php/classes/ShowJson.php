@@ -132,4 +132,30 @@ class ShowJson extends Model {
     print_r($servicesJson);
     $this->log($servicesJson);
  }
+
+  public function showCardPage($limit = false) {
+    // Get all rows from the database
+    $cards = $this->getAllRows("services", $limit);
+    $cardsArr = [];
+
+    // Print each announcement in an object
+    foreach ($cards as $card) {
+      // Fix the dat format
+      $card["date"] = date("m-d-Y", $card["date"]);
+      $attributesArr = [];
+
+      // Print each property in an object-like format
+      foreach ($card as $key => $attribute) {
+        $attribute = preg_replace("/\"/", "&quot;", $attribute);
+        $attribute = preg_replace("/\\\/", "&#92;", $attribute);
+        $attribute = preg_replace("/\r|\n/", "", $attribute);
+        $property = '"' . $key . '": "' . $attribute . '"';
+        array_push($attributesArr, $property);
+      }
+      $cardJson = "{" . implode(", ", $attributesArr) . "}";
+      array_push($cardsArr, $cardJson);
+    }
+    $cardsJson = implode(",", $cardsArr);
+    print_r($cardsJson);
+  }
 }

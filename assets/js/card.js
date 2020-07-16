@@ -7,13 +7,13 @@ function pageScript() {
     url: "php/card.php?id=" + cardId,
     success: function (response) {
       const card = JSON.parse(response);
-      const {id, name, description, imgurl, textarea} = card;
+      const {id, title, description, textarea} = card;
 
       // Card implementing
-      $("#card-title").html(name);
+      $("#card-title").html(title);
       $("#card-description").html(description);
       $("#card-textarea").attr("placeholder", textarea);
-      $("#card-img").attr("src", imgurl);
+      $("#card-img").attr("src", "images/services/" + id + ".png");
       
       showPageAfterImageLoad("#card-img", {numberOfImages: 1, minimum: 1}, false);
 

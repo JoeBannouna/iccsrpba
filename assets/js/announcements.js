@@ -41,7 +41,7 @@ function pageScript(callback) {
             </button>
           </div>
           <div class="modal-body">
-          هل تريد حذف هذا القسم
+          هل تريد حذف هذا الخبر
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">لا</button>

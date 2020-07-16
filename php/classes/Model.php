@@ -113,11 +113,15 @@ class Model extends Dbh {
             $sql = "DELETE FROM categories WHERE id = ?";
             if ($this->executeStatement([$id], $sql)) return true; else throw new Exception("Could not delete category!");
         }
+
+        // NO CODE TO DELETE THE CATEGORY'S IMAGE
     }
     
     public function deleteService($id) {
         $sql = "DELETE FROM services WHERE id = ?";
         if ($this->executeStatement([$id], $sql)) return true; else throw new Exception("Could not delete service!");
+
+        // NO CODE TO DELETE THE SERVICE'S IMAGE
     }
 
 }

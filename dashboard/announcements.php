@@ -117,6 +117,8 @@ $loggedin ? "" : header("Location: sign-in") && exit;
       if (findGetParameter("create") === "error") $("#create").html(`<div class="alert alert-danger" role="alert">حدث خطأ ما</div>`);
     }
     if (findGetParameter("delete") !== null) {
+      if (findGetParameter("delete") === "success") $("#create").html(`<div class="alert alert-success" role="alert">تم الحذف بنجاح </div>`);
+      if (findGetParameter("delete") === "error") $("#create").html(`<div class="alert alert-danger" role="alert">حدث خطأ </div>`);
       $("#inputEmail").val(findGetParameter("user"));
     }
 

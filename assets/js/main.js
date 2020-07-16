@@ -5,7 +5,7 @@ function mainScript(imageLoading) {
   if (typeof pageLoaded === "undefined") var pageLoaded = false;
 
   // Highlight active header link
-  let activeHeaderLink = $("#main-script").attr("activeHeaderLink")
+  let activeHeaderLink = $("#main-script").attr("activeHeaderLink");
   if (typeof activeHeaderLink !== "undefined") $("." + activeHeaderLink).addClass("active");
 
   // Contact button
@@ -48,7 +48,7 @@ function managePagination(scrollOffset, pageNo) {
   $("#categories-pagination ul li a").css("background", "white");
   
   if (isInteger(page)) {
-    const clickedButton = document.getElementById("categories-pagination").children[0].children[(page - 1)].children[0];
+    const clickedButton = (typeof document.getElementById("categories-pagination").children[0].children[(page - 1)] !== "undefined") ? document.getElementById("categories-pagination").children[0].children[(page - 1)].children[0] : showPageLoading();
     $(clickedButton).css("background", "#c1c1c1");
   }
   // Scroll to top for mobile :/
