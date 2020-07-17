@@ -6,11 +6,11 @@ require 'core.php';
 $logs = new Logs();
 
 $limit = (isset($_GET["limit"])) ? $_GET["limit"] : false;
-$catId = (isset($_GET["cat_id"])) ? $_GET["cat_id"] : false;
+$cardId = (isset($_GET["id"])) ? $_GET["id"] : false;
 
 try {
   $show = new ShowJson();
-  $show->showCardPage($limit, $catId);
+  $show->showCardPage($cardId);
 } catch (\Throwable $th) {
   $logs->log($th);
 }

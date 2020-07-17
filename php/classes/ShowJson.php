@@ -133,9 +133,9 @@ class ShowJson extends Model {
     $this->log($servicesJson);
  }
 
-  public function showCardPage($limit = false) {
-    // Get all rows from the database
-    $cards = $this->getAllRows("services", $limit);
+  public function showCardPage($cardId) {
+    // Get the Card from the database
+    $cards = $this->getRows($cardId, "id", "services");
     $cardsArr = [];
 
     // Print each announcement in an object
@@ -149,6 +149,7 @@ class ShowJson extends Model {
         $attribute = preg_replace("/\"/", "&quot;", $attribute);
         $attribute = preg_replace("/\\\/", "&#92;", $attribute);
         $attribute = preg_replace("/\r|\n/", "", $attribute);
+        $attribute = utf8_encode($attribute);
         $property = '"' . $key . '": "' . $attribute . '"';
         array_push($attributesArr, $property);
       }
