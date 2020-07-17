@@ -46,6 +46,10 @@ div.loading-page .loading-icon * {
   display: block;
 }
 
+.categories-span {
+  direction: rtl;
+}
+
 .white-color {
   color: white;
 }
