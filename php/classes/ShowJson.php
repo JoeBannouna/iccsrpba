@@ -149,7 +149,6 @@ class ShowJson extends Model {
         $attribute = preg_replace("/\"/", "&quot;", $attribute);
         $attribute = preg_replace("/\\\/", "&#92;", $attribute);
         $attribute = preg_replace("/\r|\n/", "", $attribute);
-        $attribute = utf8_encode($attribute);
         $property = '"' . $key . '": "' . $attribute . '"';
         array_push($attributesArr, $property);
       }
