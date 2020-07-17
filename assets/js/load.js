@@ -9,9 +9,10 @@ let servicesDropdown = false;
 function loadContact() {
   $.ajax({
     type: "get",
-    url: "components/contact",
+    url: "components/contact?v=1",
     success: function (response) {
       $("#contact-us-form").html(response);
+      $("#referrer-input").val(window.location.href);
       loadCategories();
     }
   });
@@ -54,12 +55,14 @@ function startMain() {
     } 
     else mainScript(false);
 
+    typeof contactScript !== "undefined" ? contactScript() : '';
+
   });
 }
 
 $.ajax({
   type: "get",
-  url: "components/header",
+  url: "components/header?v=1",
   success: function (response) {
     $(".header.text-center").html(response);
     loadContact();

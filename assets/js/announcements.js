@@ -1,7 +1,8 @@
 function pageScript(callback) {
 
-  if (typeof callback === "function") callback();
-  var dashboard = true;
+  var dashboard;
+  if (typeof callback === "function") dashboard = true;
+  (dashboard) ? callback() : "";
 
   $.ajax({
     type: "GET",
