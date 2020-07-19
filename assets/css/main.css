@@ -225,7 +225,7 @@ header.header.text-center nav button.navbar-toggler {
   -webkit-transform: translate(-100%, -50%);
           transform: translate(-100%, -50%);
   background: #f1f1f1;
-  border: solid 2px #c1c1c1;
+  border: solid 7px #c1c1c1;
   width: 70%;
   text-align: center;
   padding: 10px;
@@ -247,6 +247,7 @@ header.header.text-center nav button.navbar-toggler {
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
     height: auto;
+    z-index: 10;
   }
 }
 
