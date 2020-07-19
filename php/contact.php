@@ -38,6 +38,7 @@ if ($_SESSION['noOfSentMail'] < 30) {
         $mail->Password   = $_ENV["MAIL_PASSWORD"];                 // SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
         $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+        $mail->CharSet = 'UTF-8';                                   // Set the charset
 
         //Recipients
         $mail->setFrom($email);

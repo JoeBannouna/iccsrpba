@@ -29,7 +29,7 @@ if ($_SESSION['noOfSentMail'] < 30) {
   ) = $_POST;
 
   // Add extra details to the body
-  $msg = " الطلب : $order\n\n" . $msg;
+  $msg = " Order: $order\n\n" . $msg;
 
   // print_r($_POST);die();           // For testing
 
@@ -47,20 +47,23 @@ if ($_SESSION['noOfSentMail'] < 30) {
     $mail->Password   = $_ENV["MAIL_PASSWORD"];                // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+    $mail->CharSet = 'UTF-8';                                   // Set the charset
 
     //Recipients
     $mail->setFrom($email, $name);
     $mail->addAddress($_ENV["RECIEVER_MAIL"]);     // Add a recipient
-    
 
     // Attaching files
-    if (count($myFile['name']) > 10) throw new Exception("Too much images!");
-    else {
-      for ($i=0; $i < count($myFile['name']); $i++) {
-        $sentFile = $core->sendFile($_FILES, $i);
-        $logs->log($sentFile);
-        if (($mail->addAttachment($sentFile)) === false) $logs->log("THE FILE COULD NOT BE SENT", "sendImages");
-        $logs->log($sentFile, "sendImages");
+    if ($_FILES['file']['name'][0] !== "") {              // If any files exists
+      $myFile = $_FILES['file'];
+      if (count($myFile['name']) > 10) throw new Exception("Too much images!");
+      else {
+        for ($i=0; $i < count($myFile['name']); $i++) {
+          $sentFile = $core->sendFile($_FILES, $i);
+          $logs->log($sentFile, "sendmail");
+          if (($mail->addAttachment($sentFile)) === false) $logs->log("THE FILE COULD NOT BE SENT", "sendmail");
+          $logs->log($sentFile, "sendmail");
+        }
       }
     }
 
@@ -74,7 +77,7 @@ if ($_SESSION['noOfSentMail'] < 30) {
 
     $messageSent = 1;
   } catch (Exception $e) {
-    $logs->log($e->getMessage());
+    $logs->log($e->getMessage(), "sendmail");
     $messageSent = 0;
   }
 
