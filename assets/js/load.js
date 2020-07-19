@@ -32,12 +32,12 @@ function loadCategories() {
 function startMain() {
   $(function () {
     // Header drop down functionality
-    // let number = 0;
-    // // let max = (categories.length > 2) ? 3 : categories.length;
-    // for (let i = 0; i < categories.length; i++) {
-    //   dropDownItems.push(categories[number]);
-    //   number++;
-    // }
+    let number = 0;
+    let max = (categories.length > 2) ? 3 : categories.length;
+    for (let i = 0; i < max; i++) {
+      dropDownItems.push(categories[number]);
+      number++;
+    }
     // dropDownItems.map(({id, name}) => $(".span-services-dropdown span").append(`<li class="nav-item"><a class="nav-link" href="category.html?id=${id}"><i class="fas fa-arrow-left fa-fw mr-2"></i> &nbsp;${name}</a></li>`));
     
     let i = categories.length;
