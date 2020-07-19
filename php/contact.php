@@ -13,14 +13,16 @@ require_once '../vendor/autoload.php';
 
 $functions = new Functions();
 
-$referrer = "Location: " . $_POST["referrer"] . "#contact-us-form?sent=";
+function referrer($sent) {return "Location: " . $_POST["referrer"] . "#sent" . @$sent;};
 
 if (!isset($_SESSION['noOfSentMail'])) $_SESSION['noOfSentMail'] = 0;
 if ($_SESSION['noOfSentMail'] < 30) {
     $_SESSION['noOfSentMail']++;
 
     $email = $_POST['email'];
-    $msg = $_POST['msg'];
+    $msg = $_POST['message'];
+
+    // print_r($_POST);die();           // For testing
 
     // Instantiation and passing `true` enables exceptions
     $mail = new PHPMailer(true);
@@ -38,8 +40,8 @@ if ($_SESSION['noOfSentMail'] < 30) {
         $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
         //Recipients
-        $mail->setFrom($email, 'ICCSRPBA');
-        $mail->addAddress($_ENV["MAIL_USER"], $name);     // Add a recipient
+        $mail->setFrom($email);
+        $mail->addAddress($_ENV["RECIEVER_MAIL"], $name);     // Add a recipient
         
         // Content
         $mail->isHTML(true);                                  // Set email format to HTML
@@ -55,8 +57,8 @@ if ($_SESSION['noOfSentMail'] < 30) {
         $messageSent = 0;
     }
 
-    header($referrer.$messageSent);         // Send the user back with a confirmation msg
+    header(referrer($messageSent));         // Send the user back with a confirmation msg
 } else {
-    header($referrer."2");         // Send the user with warning msg
+    header(referrer("2"));                  // Send the user with warning msg
     $logs->log("number of sent emails over 30!", "sendmail");
 }

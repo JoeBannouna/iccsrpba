@@ -102,6 +102,10 @@ div.loading-page .loading-icon * {
   overflow-x: hidden;
 }
 
+.margin-0 {
+  margin: 0 !important;
+}
+
 .margin-bottom-0 {
   margin-bottom: 0 !important;
 }
@@ -112,6 +116,14 @@ div.loading-page .loading-icon * {
 
 .dark-grey {
   color: #444;
+}
+
+.green {
+  color: #39c439;
+}
+
+.red {
+  color: #cc2525;
 }
 
 @media screen and (min-width: 768px) {
@@ -194,12 +206,47 @@ header.header.text-center nav button.navbar-toggler {
 }
 
 @media screen and (min-width: 992px) {
+  header.header.text-center {
+    z-index: 10;
+  }
   header.header.text-center nav {
     padding-top: 5%;
     padding-bottom: 0;
   }
   header.header.text-center nav div div ul.social-list.list-inline.py-3.mx-auto {
     padding: 0 !important;
+  }
+}
+
+.categories-dropdown {
+  position: fixed;
+  color: black;
+  height: 50%;
+  -webkit-transform: translate(-100%, -50%);
+          transform: translate(-100%, -50%);
+  background: #f1f1f1;
+  border: solid 2px #c1c1c1;
+  width: 70%;
+  text-align: center;
+  padding: 10px;
+}
+
+.categories-dropdown ul li {
+  margin: 10px;
+  list-style-type: square;
+  text-align: right !important;
+}
+
+.categories-dropdown ul li a {
+  color: black !important;
+}
+
+@media screen and (max-width: 991px) {
+  .categories-dropdown {
+    position: absolute;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    height: auto;
   }
 }
 

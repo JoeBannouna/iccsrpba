@@ -58,6 +58,9 @@ function managePagination(scrollOffset, pageNo) {
   $([document.documentElement, document.body]).animate({
     scrollTop: offset.top
   }, 1);
+
+  // if (typeof scrollToContact !== "undefined") scrollToContact(); else console.log("no");
+
 }
 
 // Get GET parameters

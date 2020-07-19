@@ -36,6 +36,8 @@ header.header.text-center {
 
 @media screen and (min-width: 992px) {
   header.header.text-center {
+    z-index: 10;
+
     nav {
       padding-top: 5%;
       padding-bottom: 0;
@@ -48,5 +50,37 @@ header.header.text-center {
         }
       }
     }
+  }
+}
+
+.categories-dropdown {
+  position: fixed;
+  color: black;
+  height: 50%;
+  transform: translate(-100%, -50%);
+  background: #f1f1f1;
+  border: solid 2px #c1c1c1;
+  width: 70%;
+  text-align: center;
+  padding: 10px;
+
+  ul {
+    li {
+      margin: 10px;
+      list-style-type: square;
+      text-align: right !important;
+
+      a {
+        color: black !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .categories-dropdown {
+    position: absolute;
+    transform: translate(0, 0);
+    height: auto;
   }
 }
