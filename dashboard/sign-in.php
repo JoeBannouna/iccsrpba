@@ -112,7 +112,7 @@ body {
   </form>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="/assets/js/main.js?v=3" activeHeaderLink="indexPage" id="main-script"></script>
+  <script src="/assets/js/main.js?v=4" activeHeaderLink="indexPage" id="main-script"></script>
   <script>
     if (findGetParameter("e") !== null) {
       if (findGetParameter("e") === "invalid") {

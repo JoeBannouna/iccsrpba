@@ -9,7 +9,7 @@ let servicesDropdown = false;
 function loadContact() {
   $.ajax({
     type: "get",
-    url: "components/contact?v=3",
+    url: "components/contact?v=4",
     success: function (response) {
       $("#contact-us-form").html(response);
       $("#referrer-input").val(window.location.origin + window.location.pathname + window.location.search);
@@ -69,12 +69,10 @@ function startMain() {
         if (!isCategoriesPage) $(".services-dropdown").parent().removeClass("active");
         $(".span-services-dropdown").css("display", "none");
         servicesDropdown = false;
-        console.log("False");
       } else if (alwaysClose === true) {
         servicesDropdown = !servicesDropdown;
         if (!isCategoriesPage) servicesDropdown ? $(".services-dropdown").parent().addClass("active") : $(".services-dropdown").parent().removeClass("active");
         servicesDropdown ? $(".span-services-dropdown").css("display", "flex") : $(".span-services-dropdown").css("display", "none");
-        console.log(servicesDropdown);
       }
     }
 
@@ -94,7 +92,7 @@ function startMain() {
 
 $.ajax({
   type: "get",
-  url: "components/header?v=3",
+  url: "components/header?v=4",
   success: function (response) {
     $(".header.text-center").html(response);
     loadContact();

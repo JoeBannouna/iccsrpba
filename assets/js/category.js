@@ -13,7 +13,6 @@ function pageScript() {
       let numberOfCards = 0;
 
       let divNumber = 0;
-      console.log(category.services);
       category.services.map(({id, title, description, imgurl}, index) => {
         if (index % 3 === 0) {
           $(`.categories-span${divNumber}`).after(`<div style="display: none;" class="row categories-span categories-span${divNumber + 1}"></div>`);

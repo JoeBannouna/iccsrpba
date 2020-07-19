@@ -241,6 +241,11 @@ header.header.text-center nav button.navbar-toggler {
   color: black !important;
 }
 
+.categories-dropdown ul li a:hover {
+  color: blue !important;
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 991px) {
   .categories-dropdown {
     position: absolute;

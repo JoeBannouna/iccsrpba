@@ -15,7 +15,7 @@ $loggedin ? "" : header("Location: sign-in") && exit;
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="من خلال خبرتنا الممتدة أكثر من 20 سنة في عالم الاختراعات والبحث العلمي نقدم هذا الموقع للعالم العربي بطريقة حديثة ومتطورة لكي نكون مواكبين للعالم المتقدم">
+  <meta name="description" content="من خلال خبرتنا الممتدة سنوات في عالم الاختراعات والبحث العلمي نقدم هذا الموقع للعالم العربي بطريقة حديثة ومتطورة لكي نكون مواكبين للعالم المتقدم">
   <meta name="author" content="@DaSlackerHacker on twitter">
   <link rel="shortcut icon" href="/favicon.ico"> 
   
@@ -24,7 +24,7 @@ $loggedin ? "" : header("Location: sign-in") && exit;
   
   <!-- Theme CSS -->
   <link id="theme-style" rel="stylesheet" href="/assets/css/theme-2.css">
-  <link id="theme-style" rel="stylesheet" href="/assets/css/main.css?v=3">
+  <link id="theme-style" rel="stylesheet" href="/assets/css/main.css?v=4">
   <link id="theme-style" rel="stylesheet" href="/assets/css/loading.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/droidarabickufi.css">
 
@@ -108,9 +108,9 @@ $loggedin ? "" : header("Location: sign-in") && exit;
   <!-- Javascript -->
   <script src="/assets/plugins/popper.min.js"></script>
   <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
-  <script src="/assets/js/main.js?v=3" activeHeaderLink="indexPage" id="main-script"></script>
-  <script src="/assets/js/announcements.js?v=3"></script>
-  <script src="/assets/js/dashboard.js?v=3"></script>
+  <script src="/assets/js/main.js?v=4" activeHeaderLink="indexPage" id="main-script"></script>
+  <script src="/assets/js/announcements.js?v=4"></script>
+  <script src="/assets/js/dashboard.js?v=4"></script>
   <script>
     if (findGetParameter("create") !== null) {
       if (findGetParameter("create") === "success") $("#create").html(`<div class="alert alert-success" role="alert">تم إنشاؤه بنجاح</div>`);

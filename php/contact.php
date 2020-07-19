@@ -29,25 +29,25 @@ if ($_SESSION['noOfSentMail'] < 30) {
     
     try {
         //Server settings
-        // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                   // Enable verbose debug output
+        // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
         $mail->isSMTP();                                            // Send using SMTP
         $mail->isSMTP();                                            // Send using SMTP
-        $mail->Host       = $_ENV["MAIL_SERVER"];                  // Set the SMTP server to send through
+        $mail->Host       = $_ENV["MAIL_SERVER"];                   // Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-        $mail->Username   = $_ENV["MAIL_USER"];                    // SMTP username
-        $mail->Password   = $_ENV["MAIL_PASSWORD"];                // SMTP password
+        $mail->Username   = $_ENV["MAIL_USER"];                     // SMTP username
+        $mail->Password   = $_ENV["MAIL_PASSWORD"];                 // SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
         $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
         //Recipients
         $mail->setFrom($email);
-        $mail->addAddress($_ENV["RECIEVER_MAIL"], $name);     // Add a recipient
+        $mail->addAddress($_ENV["RECIEVER_MAIL"]);                  // Add a recipient
         
         // Content
-        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->isHTML(true);                                        // Set email format to HTML
         $mail->Subject = 'New Mail!';
         $mail->Body    = "<p>" . preg_replace("/\r|\n/", "<br>", $msg) . "</p>";
-        $mail->AltBody = "$msg" . $code;
+        $mail->AltBody = $msg;
     
         $mail->send();
 

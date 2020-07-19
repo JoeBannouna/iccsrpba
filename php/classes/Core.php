@@ -44,4 +44,27 @@ class Core extends Logs {
     }
     return false;
   }
+  
+  public function sendFile($files, $i) {
+    $name = $files['file']['name'][$i];
+    $tmp_name = $files['file']['tmp_name'][$i];
+
+    if (isset($name)) {
+      if (!empty($name)) {
+        $location = ROOT_DIR . "/images/mail/";
+        
+        // Check if directory exists and created
+        if (!file_exists($location."test.log")) {
+          mkdir(ROOT_DIR . "/images/mail", 0755);
+          file_put_contents($location."test.log", "File and Directory has been created");
+        }
+
+        // Save the file and return the extention
+        if (move_uploaded_file($tmp_name, $location.$name)) {
+            return $location.$name;
+        }
+      }
+    }
+    return false;
+  }
 }
