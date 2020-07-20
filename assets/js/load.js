@@ -9,7 +9,7 @@ let servicesDropdown = false;
 function loadContact() {
   $.ajax({
     type: "get",
-    url: "components/contact?v=4",
+    url: "components/contact?v=5",
     success: function (response) {
       $("#contact-us-form").html(response);
       $("#referrer-input").val(window.location.origin + window.location.pathname + window.location.search);
@@ -92,7 +92,7 @@ function startMain() {
 
 $.ajax({
   type: "get",
-  url: "components/header?v=4",
+  url: "components/header?v=5",
   success: function (response) {
     $(".header.text-center").html(response);
     loadContact();
