@@ -100,6 +100,32 @@ class Model extends Dbh {
         if ($this->executeStatement($values, $sql)) return true; else throw new Exception("Could not upload to database!");
     }
 
+    public function updatePost($id, $array, $table, $img = null) {
+
+        // Upload the image and put its URL in the database
+        if ($img !== null) {
+            $upload = $this->uploadImage($img, $table, $id);
+            if ($upload === false) throw new Exception("Image could not be uploaded!");
+        }
+        
+        // Create the arrays for the sql statement
+        $values = $fields = [];
+        foreach ($array as $key => $value) array_push($fields, $key) && array_push($values, $value);
+        
+        $fieldStrArr = [];
+        foreach ($fields as $field) array_push($fieldStrArr, $field . " = ?");
+        
+        $fieldsStr = implode(", ", $fieldStrArr);
+        array_push($values, $id);                                    // Add the id to the set of values
+        $sql = "UPDATE $table SET $fieldsStr WHERE id = ?";
+
+        $this->log($sql, "logclass");
+        $this->log($values, "logclass");
+
+        // Execute..
+        if ($this->executeStatement($values, $sql)) return true; else throw new Exception("Could not update the database!");
+    }
+
     public function deleteAnnouncement($id) {
         $sql = "DELETE FROM announcements WHERE id = ?";
         if ($this->executeStatement([$id], $sql)) return true; else throw new Exception("Could not delete announcement!");

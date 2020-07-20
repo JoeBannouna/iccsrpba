@@ -7,15 +7,17 @@ function pageScript(cat) {
   pixels = (typeof cat === "object") ? false : 20;
   (pixels === false) ? categories = cat : "" ;
   categories.map(({id, name, imgurl}, index) => {
+    imageVersion = Math.random() * 10;
     if (index % 6 === 0) {
       $(`.categories-span${divNumber}`).after(`<div style="display: none;" class="row categories-span categories-span${divNumber + 1}"></div>`);
       divNumber++;
     }
     $(`.categories-span${divNumber}`).append(
   `<div class="col-md-4 text-justify text-center">
-      <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="${imgurl}">
+      <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="${imgurl}?v=${imageVersion}">
       <h4>${name}</h4>
       <p>` + ((typeof cat === "object") ? `<!-- Button trigger modal -->
+      <a href="editcategory?id=${id}" class="btn btn-success">تعديل</a>
       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#index${index}">حذف</button>
       
       <!-- Modal -->

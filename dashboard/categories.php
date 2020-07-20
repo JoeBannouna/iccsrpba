@@ -122,6 +122,11 @@ $loggedin ? "" : header("Location: sign-in") && exit;
       else $("#inputEmail").val(findGetParameter("user"));
     }
 
+    if (findGetParameter("edit") !== null) {
+      if (findGetParameter("edit") === "success") $("#create").html(`<div class="alert alert-success" role="alert">تم التعديل بنجاح </div>`);
+      if (findGetParameter("edit") === "error") $("#create").html(`<div class="alert alert-danger" role="alert">حدث خطأ </div>`);
+    }
+
     if (findGetParameter("remember") !== null) {
       $("#remember").attr("checked", true);
     }

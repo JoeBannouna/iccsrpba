@@ -25,7 +25,7 @@ function pageScript(callback) {
           <p class="h5 card-text">${description}</p>
           <div class="margin-bottom-0">
             <h6 class="font-weight-lighter d-flex justify-content-right">${date}</h6>`+
-            ((dashboard) ? `<div class="d-flex justify-content-center margin-bottom-0"><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#index${index}">حذف</button></div>` : ``)
+            ((dashboard) ? `<div class="d-flex justify-content-center margin-bottom-0"><a href="editannouncement?id=${id}" class="btn btn-success">تعديل</a>&nbsp;&nbsp;<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#index${index}">حذف</button></div>` : ``)
           + `</div>
         </div>
       </div>` +

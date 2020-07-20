@@ -31,16 +31,14 @@ $loggedin ? "" : header("Location: sign-in") && exit;
   <!-- Load JQuery -->
   <script src="/assets/plugins/jquery-3.3.1.min.js"></script>
 
-  <!-- Script for the text editor -->
-  <script src="//cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
-
   <!-- Some small styles for the dashboard -->
   <style>
-    * {
-      text-align: right;
-      direction: rtl;
-    }
     
+    .navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark, form, .form-title {
+      direction: rtl;
+      text-align: right;
+    }
+
     .navbar-nav.mr-auto {
       margin-right: 0 !important;
       float: right;
@@ -58,30 +56,30 @@ $loggedin ? "" : header("Location: sign-in") && exit;
 
 <body>
 
-<?php $announcements = 'active'; include 'header.php'; ?>
+  <?php $categories = 'active'; include 'header.php'; ?>
   
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
-          <spn id="create"></spn>
-          <h2 class="font-weight-lighter">إنشاء خبر..</h2>
+          <spn id="create" class="arabic-text"></spn>
+          <h2 class="font-weight-lighter form-title">تعديل قسم..</h2>
           <br>
-          <form action="../php/addannouncement.php" method="POST" enctype="multipart/form-data">
+          <?php require_once "../php/editcategoryscript.php"; ?>
+          <form action="" method="POST" enctype="multipart/form-data">
             <div class="form-group">
               <div class="form-group">
                 <label for="exampleInputtext1">العنوان</label>
-                <input type="text" name="title" class="form-control" id="exampleInputtext1" aria-describedby="textHelp">
+                <input type="text" name="title" class="form-control" required id="exampleInputtext1" aria-describedby="textHelp" value="<?php echo $name; ?>">
               </div>
-              <label for="editor1">الوصف</label>
-              <textarea name="text" class="form-control" id="editor1" rows="3"></textarea>
             </div>
-            <!-- <div class="form-group">
-              <label for="exampleFormControlFile1">تحميل صورة</label>
+            <div class="form-group">
+              <label for="exampleFormControlFile1"><big>تغير صورة</big></label>
               <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
-            </div> -->
+              <img src="<?php echo "/images/categories/$imgSrc"; ?>" class="img-fluid" alt="Image">
+            </div>
             <div class="d-flex justify-content-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">تعديل</button>
             </div>
           </form>
         </div>
@@ -90,42 +88,25 @@ $loggedin ? "" : header("Location: sign-in") && exit;
       <hr>
     </div> <!-- /container -->
   </main>
-
-  <div class="loading-page">
-      <div class="loading-icon">
-        <div class="ld ld-hourglass ld-spin-fast" style="font-size:64px;color:rgb(82, 166, 218)"></div>
-      </div>
-      <section class="blog-list px-3 py-5 p-md-5">
-        <div class="container-fluid marketing main-page-core">
-          <div class="row categories-span0"></div>
-          <nav aria-label="Categories pagination" class="d-flex justify-content-center width-100" id="categories-pagination">
-            <ul class="pagination"></ul>
-          </nav>
-        </div>
-      </section>
-    </div>
        
   <!-- Javascript -->
   <script src="/assets/plugins/popper.min.js"></script>
   <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
   <script src="/assets/js/main.js?v=4" activeHeaderLink="indexPage" id="main-script"></script>
-  <script src="/assets/js/announcements.js?v=4"></script>
   <script src="/assets/js/dashboard.js?v=4"></script>
   <script>
+    pageLoaded = true;
+
     if (findGetParameter("create") !== null) {
       if (findGetParameter("create") === "success") $("#create").html(`<div class="alert alert-success" role="alert">تم إنشاؤه بنجاح</div>`);
       if (findGetParameter("create") === "error") $("#create").html(`<div class="alert alert-danger" role="alert">حدث خطأ ما</div>`);
+      if (findGetParameter("create") === "imageerror") $("#create").html(`<div class="alert alert-danger" role="alert">حدث خطأ أثناء تحميل الصورة</div>`);
     }
-
+    
     if (findGetParameter("delete") !== null) {
       if (findGetParameter("delete") === "success") $("#create").html(`<div class="alert alert-success" role="alert">تم الحذف بنجاح </div>`);
       if (findGetParameter("delete") === "error") $("#create").html(`<div class="alert alert-danger" role="alert">حدث خطأ </div>`);
-      $("#inputEmail").val(findGetParameter("user"));
-    }
-    
-    if (findGetParameter("edit") !== null) {
-      if (findGetParameter("edit") === "success") $("#create").html(`<div class="alert alert-success" role="alert">تم التعديل بنجاح </div>`);
-      if (findGetParameter("edit") === "error") $("#create").html(`<div class="alert alert-danger" role="alert">حدث خطأ </div>`);
+      else $("#inputEmail").val(findGetParameter("user"));
     }
 
     if (findGetParameter("remember") !== null) {
@@ -133,13 +114,19 @@ $loggedin ? "" : header("Location: sign-in") && exit;
     }
 
     $(function () {
+      imagesLoaded = 0;
       mainScript();
-      const callback = function() {
-        $([document.documentElement, document.body]).animate({
-          scrollTop: 0
-        }, 1);
-      }
-      pageScript(callback);
+      $.ajax({
+        type: "GET",
+        url: "/php/categories.php",
+        success: function (response) {
+          var categories = JSON.parse(response);
+          managePagination(false, 1);
+          $([document.documentElement, document.body]).animate({
+            scrollTop: 0
+          }, 1);
+        }
+      });
     });
   </script>
 </body>

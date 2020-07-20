@@ -7,11 +7,12 @@ function pageScript() {
     success: function (response) {
       console.log(response);
       let services = JSON.parse(response);
-    
+      
       let numberOfCards = 0;
-
+      
       let divNumber = 0;
       services.map(({id, title, description, imgurl}, index) => {
+        imageVersion = Math.random() * 10;
         if (index % 3 === 0) {
           $(`.categories-span${divNumber}`).after(`<div style="display: none;" class="row categories-span categories-span${divNumber + 1}"></div>`);
           divNumber++;
@@ -19,10 +20,11 @@ function pageScript() {
         $(`.categories-span${divNumber}`).append(
       `<div class="col-sm-4">
         <div class="card">
-          <img src="${imgurl}" class="card-img-top" alt="${title}">
+          <img src="${imgurl}?v=${imageVersion}" class="card-img-top" alt="${title}">
           <div class="card-body">
             <h5 class="card-title">${title} </h5>
             <p class="card-text">${description}</p>
+            <a href="editservice?id=${id}" class="btn btn-success">تعديل</a>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#index${index}">حذف</button>
             
             <!-- Modal -->

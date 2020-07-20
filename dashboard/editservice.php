@@ -68,20 +68,23 @@ $loggedin ? "" : header("Location: sign-in") && exit;
           <spn id="create" class="arabic-text"></spn>
           <h2 class="font-weight-lighter form-title">إنشاء خدمة..</h2>
           <br>
-          <form action="../php/addservice.php" method="POST" enctype="multipart/form-data">
+          <?php require_once "../php/editservicescript.php"; ?>
+          <form action="" method="POST" enctype="multipart/form-data">
             <div class="form-group">
               <div class="form-group">
                 <label for="exampleInputtext1">العنوان</label>
-                <input type="text" name="title" class="form-control" required id="exampleInputtext1" aria-describedby="textHelp">
+                <input type="text" name="title" class="form-control" required id="exampleInputtext1" aria-describedby="textHelp" value="<?php echo $name; ?>">
               </div>
               <label for="editor1">الوصف</label>
               <textarea name="text" class="form-control" id="editor1" rows="3"></textarea>
             </div>
             <div class="form-group">
-              <label for="exampleFormControlFile1">تحميل صورة</label>
-              <input type="file" name="file" required class="form-control-file" id="exampleFormControlFile1">
+              <label for="exampleFormControlFile1">تغير صورة</label>
+              <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
             </div>
-            <select name="category" class="form-control form-control-lg" id="idCatSelect" style="padding: 0;margin-right: 0;padding-right: 10px;">
+            <img src="<?php echo "/images/services/$imgSrc"; ?>" class="img-fluid" alt="Image">
+            <br><br>
+            <select value="<?php echo $catId; ?>" name="category" class="form-control form-control-lg" id="idCatSelect" style="padding: 0;margin-right: 0;padding-right: 10px;">
             <option value="empty">القسم</option>
               <?php 
                 ob_start();
@@ -91,12 +94,16 @@ $loggedin ? "" : header("Location: sign-in") && exit;
                 $json = json_decode($content, true);
                 foreach ($json as $key => $value) {
                   list("id" => $id, "name" => $name) = $value;
-                  // $name = rawurldecode($name);
-                  print_r("<option value=\"$id\">$name</option>");
+                  if ($catId === $id) {
+                    print_r("<option selected=\"selected\" value=\"$id\">$name</option>");
+                  } else {
+                    print_r("<option value=\"$id\">$name</option>");
+                  }
                 }
               ?>
             </select>
             <div>
+              <br>
               <h2>تفاصيل الطلب</h2>
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="الاسم بالكامل" value="الاسم بالكامل" readonly>
@@ -111,13 +118,13 @@ $loggedin ? "" : header("Location: sign-in") && exit;
                 <input type="text" class="form-control" placeholder="الموضوع" value="الموضوع" readonly>
               </div>
               <div class="form-group">
-                <textarea class="form-control" name="textarea" id="card-textarea" rows="3" placeholder="نص الايميل" value="نص الايميل">نص الايميل</textarea>
+                <textarea class="form-control" name="textarea" id="card-textarea" rows="3" placeholder="<?php echo $textarea; ?>"><?php echo $textarea; ?></textarea>
               </div>
               <div class="form-group text-align-right">
                 <label for="filesInput" class="lead">أي ملفات مرفقة</label>
                 <input type="file" readonly disabled id="filesInput" class="form-control-file">
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">تعديل</button>
             </div>
           </form>
         </div>
@@ -126,26 +133,11 @@ $loggedin ? "" : header("Location: sign-in") && exit;
       <hr>
     </div> <!-- /container -->
   </main>
-
-  <div class="loading-page">
-    <div class="loading-icon">
-      <div class="ld ld-hourglass ld-spin-fast" style="font-size:64px;color:rgb(82, 166, 218)"></div>
-    </div>
-    <section class="blog-list px-3 py-5 p-md-5">
-      <div class="container marketing main-page-core">
-        <div class="row categories-span0"></div>
-        <nav aria-label="Categories pagination" class="d-flex justify-content-center width-100" id="categories-pagination">
-          <ul class="pagination"></ul>
-        </nav>
-      </div>
-    </section>
-  </div>
        
   <!-- Javascript -->
   <script src="/assets/plugins/popper.min.js"></script>
   <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
   <script src="/assets/js/main.js?v=4" activeHeaderLink="indexPage" id="main-script"></script>
-  <script src="/assets/js/services.js?v=4"></script>
   <script src="/assets/js/dashboard.js?v=4"></script>
   <script>
     pageLoaded = true;
@@ -156,16 +148,10 @@ $loggedin ? "" : header("Location: sign-in") && exit;
       if (findGetParameter("create") === "imageerror") $("#create").html(`<div class="alert alert-danger" role="alert">حدث خطأ أثناء تحميل الصورة</div>`);
       if (findGetParameter("create") === "chooseerror") $("#create").html(`<div class="alert alert-danger" role="alert">رجاء اختر القسم لهذه الخدمة</div>`);
     }
-    
     if (findGetParameter("delete") !== null) {
       if (findGetParameter("delete") === "success") $("#create").html(`<div class="alert alert-success" role="alert">تم الحذف بنجاح </div>`);
       if (findGetParameter("delete") === "error") $("#create").html(`<div class="alert alert-danger" role="alert">حدث خطأ </div>`);
       $("#inputEmail").val(findGetParameter("user"));
-    }
-    
-    if (findGetParameter("edit") !== null) {
-      if (findGetParameter("edit") === "success") $("#create").html(`<div class="alert alert-success" role="alert">تم التعديل بنجاح </div>`);
-      if (findGetParameter("edit") === "error") $("#create").html(`<div class="alert alert-danger" role="alert">حدث خطأ </div>`);
     }
 
     if (findGetParameter("remember") !== null) {
@@ -177,6 +163,8 @@ $loggedin ? "" : header("Location: sign-in") && exit;
       mainScript();
       pageScript();
     });
+
+    CKEDITOR.instances.editor1.setData(`<?php echo $description ?>`);
   </script>
 </body>
 </html>
