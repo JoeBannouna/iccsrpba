@@ -7,10 +7,11 @@ function pageScript() {
     url: "php/card.php?id=" + cardId,
     success: function (response) {
       const card = JSON.parse(response);
-      const {id, title, description, textarea} = card;
+      const {id, title, description, textarea, cat_id} = card;
 
       // Card implementing
       $("#card-title").html(title);
+      $("#back-link").attr("href", `category?id=${cat_id}`);
       $("#card-description").html(description);
       $("#card-textarea").attr("placeholder", textarea);
       $("#card-img").attr("src", "images/services/" + id + ".png");
