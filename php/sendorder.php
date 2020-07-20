@@ -21,11 +21,12 @@ if ($_SESSION['noOfSentMail'] < 30) {
   $_SESSION['noOfSentMail']++;
 
   list(
-    "subject" =>  $subject, 
-    "name"    =>  $name, 
-    "email"   =>  $email, 
-    "order"   =>  $order, 
-    "text"    =>  $msg
+    "subject"   =>  $subject, 
+    "order-url" =>  $orderUrl,
+    "name"      =>  $name, 
+    "email"     =>  $email, 
+    "order"     =>  $order, 
+    "text"      =>  $msg
   ) = $_POST;
 
   // Add extra details to the body
@@ -70,7 +71,7 @@ if ($_SESSION['noOfSentMail'] < 30) {
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = "New Order: $subject";
-    $mail->Body    = "<p>" . preg_replace("/\r|\n/", "<br>", $msg) . "</p>";
+    $mail->Body    = "The order: <a href=\"$orderUrl\">$orderUrl</a><br><br><p>" . preg_replace("/\r|\n/", "<br>", $msg) . "</p>";
     $mail->AltBody = $msg;
 
     $mail->send();

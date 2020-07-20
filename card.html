@@ -82,28 +82,29 @@
             <div class="blog-post px-3 py-5 p-md-5 arabic arabic-text text-align-center">
               <p class="h4 font-weight-lighter">طلب الخدمة أو اي أسئلة حولها</p>
               <br>
-              <form action="php/sendorder.php" method="POST" enctype="multipart/form-data">
+              <form class="order" action="php/sendorder.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                  <input type="text" name="name" class="form-control" placeholder="الاسم بالكامل">
+                  <input type="text" name="name" class="form-control" placeholder="الاسم بالكامل" required>
                 </div>
                 <div class="form-group">
-                  <input type="email" name="email" class="form-control" placeholder="الايميل">
+                  <input type="email" name="email" class="form-control" placeholder="الايميل" required>
                 </div>
                 <div class="form-group">
                 <div class="form-group">
-                  <input type="text" name="order" class="form-control" placeholder="الطلب">
+                  <input type="text" name="order" class="form-control" placeholder="الطلب" required>
                 </div>
-                  <input type="text" name="subject" class="form-control" placeholder="الموضوع">
+                  <input type="text" name="subject" class="form-control" placeholder="الموضوع" required>
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" name="text" id="card-textarea" rows="3" placeholder=""></textarea>
+                  <textarea class="form-control" name="text" id="card-textarea" rows="3" placeholder="" required></textarea>
                 </div>
                 <div class="form-group text-align-right">
                   <label for="filesInput" class="lead">أي ملفات مرفقة</label>
                   <input type="file" name="file[]" id="filesInput" class="form-control-file" multiple="multiple">
                 </div>
-                <input type="hidden" name="referrer" id="referrer-input">
-                <button type="submit" class="btn btn-primary">ارسال</button>
+                <input type="hidden" name="referrer" class="referrer-input">
+                <input type="hidden" name="order-url" id="order-url">
+                <button id="sendmail-submit-button" type="submit" class="btn btn-primary">ارسال</button>
               </form>
             </div>
           </div>

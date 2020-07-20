@@ -12,7 +12,8 @@ function loadContact() {
     url: "components/contact?v=5",
     success: function (response) {
       $("#contact-us-form").html(response);
-      $("#referrer-input").val(window.location.origin + window.location.pathname + window.location.search);
+      $(".referrer-input").val(window.location.origin + window.location.pathname + window.location.search);
+      $("#order-url").val(window.location.href);
       loadCategories();
     }
   });
@@ -85,7 +86,20 @@ function startMain() {
     } 
     else mainScript(false);
 
-    // typeof contactScript !== "undefined" ? contactScript() : '';
+    var LoadingButton = `
+    <button class="btn btn-primary" type="button" disabled>
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      <span class="sr-only">Loading...</span>
+    </button>
+    `;
+
+    $("form.contact").submit(e => { 
+      $("#sendmail-submit-button-contact").replaceWith(LoadingButton);
+    });
+    
+    $("form.order").submit(e => { 
+      $("#sendmail-submit-button").replaceWith(LoadingButton);
+    });
 
   });
 }
