@@ -77,6 +77,26 @@ $loggedin ? "" : header("Location: sign-in") && exit;
       <hr>
     </div> <!-- /container -->
   </main>
+
+  <div class="container  d-flex justify-content-center flex-direction-column align-items-center">
+    <?php require_once '../php/changepassword.php'; ?>
+    <form action="" method="POST" class="col-lg-6 col-md-8 col-sm-10">
+      <h1 class="d-flex justify-content-center"><small>تغير كلمة السر</small></h1>
+      <br>
+      <div class="form-group d-flex justify-content-center">
+        <input type="password" placeholder="كلمة السر القديمة" class="form-control" name="oldpass">
+      </div>
+      <div class="form-group d-flex justify-content-center">
+        <input type="password" placeholder="كلمة السر الجديدة" class="form-control" name="newpass">
+      </div>
+      <div class="form-group d-flex justify-content-center">
+        <input type="password" placeholder="تأكيد كلمة السر" class="form-control" name="confirmpass">
+      </div>
+      <div class="form-group d-flex justify-content-center">
+        <input type="submit" class="btn btn-info" value="تغير كلمة السر">
+      </div>
+    </form>
+  </div>
        
   <!-- Javascript -->
   <script src="/assets/plugins/popper.min.js"></script>

@@ -98,9 +98,7 @@ body {
     <label for="inputPassword" class="sr-only">كلمة السر</label>
     <input type="password" name="password" id="inputPassword" class="form-control arabic-text" placeholder="كلمة السر" required>
     <div class="checkbox mb-3">
-      <label class="arabic">
-        <input name="remember" type="checkbox" value="1" id="remember"> تذكرني
-      </label>
+      <input name="remember" hidden type="checkbox" value="1" id="remember">
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">الدخول</button>
     <p class="mt-5 mb-3 text-muted"></p>

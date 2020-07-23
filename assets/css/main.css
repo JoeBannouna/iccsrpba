@@ -126,6 +126,13 @@ div.loading-page .loading-icon * {
   color: #cc2525;
 }
 
+.flex-direction-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 @media screen and (min-width: 768px) {
   .width-100 {
     width: 100%;

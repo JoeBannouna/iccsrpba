@@ -17,7 +17,7 @@ if (!$loggedin) {
 
   // Check if the values exist
   if (isset($user["user"], $user["password"])) {
-    $remember = (isset($user["remember"])) ? true : false;
+    $remember = (isset($user["remember"])) ? true : true;
     $rememberString = ($remember) ? "&remember=1" : "";
 
     // Check if the values are empty
@@ -39,8 +39,8 @@ if (!$loggedin) {
             
             if ($remember) {
               // Start a cookie session
-              setcookie("user_id", $userRow['id'], strtotime("+5 years"), "/");
-              setcookie("user_session", $hashedSession, strtotime("+5 years"), "/");
+              setcookie("user_id", $userRow['id'], strtotime("+2 hours"), "/");
+              setcookie("user_session", $hashedSession, strtotime("+2 hours"), "/");
             } else {
               // Start a session
               @session_start();
