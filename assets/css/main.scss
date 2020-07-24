@@ -42,6 +42,13 @@ div.loading-page {
   direction: rtl;
 }
 
+@media screen and (max-width: 767px) {
+  h2.h2.col-xs-4 {
+    position: static;
+    transform: translateY(-30px);
+  }
+}
+
 // Import colors
 @import 'colors';
 

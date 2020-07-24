@@ -50,6 +50,14 @@ div.loading-page .loading-icon * {
   direction: rtl;
 }
 
+@media screen and (max-width: 767px) {
+  h2.h2.col-xs-4 {
+    position: static;
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+  }
+}
+
 .white-color {
   color: white;
 }
