@@ -38,7 +38,17 @@ if ($_SESSION['noOfSentMail'] < 30) {
         $mail->Password   = $_ENV["MAIL_PASSWORD"];                 // SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
         $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+
         $mail->CharSet = 'UTF-8';                                   // Set the charset
+
+        // For most clients expecting the Priority header:
+        // 1 = High, 2 = Medium, 3 = Low
+        $mail->Priority = 1;
+        // MS Outlook custom header
+        // May set to "Urgent" or "Highest" rather than "High"
+        $mail->AddCustomHeader("X-MSMail-Priority: High");
+        // Not sure if Priority will also set the Importance header:
+        $mail->AddCustomHeader("Importance: High");
 
         //Recipients
         $mail->setFrom($email);
