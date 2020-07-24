@@ -53,8 +53,13 @@ div.loading-page .loading-icon * {
 @media screen and (max-width: 767px) {
   h2.h2.col-xs-4 {
     position: static;
-    -webkit-transform: translateY(-30px);
-            transform: translateY(-30px);
+    -webkit-transform: translateY(-37px);
+            transform: translateY(-37px);
+  }
+  .cardh2 {
+    position: static;
+    -webkit-transform: translateY(-47px);
+            transform: translateY(-47px);
   }
 }
 

@@ -45,7 +45,12 @@ div.loading-page {
 @media screen and (max-width: 767px) {
   h2.h2.col-xs-4 {
     position: static;
-    transform: translateY(-30px);
+    transform: translateY(-37px);
+  }
+
+  .cardh2 {
+    position: static;
+    transform: translateY(-47px);
   }
 }
 
