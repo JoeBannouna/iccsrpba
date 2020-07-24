@@ -41,14 +41,14 @@ if ($_SESSION['noOfSentMail'] < 30) {
 
         $mail->CharSet = 'UTF-8';                                   // Set the charset
 
-        // For most clients expecting the Priority header:
-        // 1 = High, 2 = Medium, 3 = Low
-        $mail->Priority = 1;
-        // MS Outlook custom header
-        // May set to "Urgent" or "Highest" rather than "High"
-        $mail->AddCustomHeader("X-MSMail-Priority: High");
-        // Not sure if Priority will also set the Importance header:
-        $mail->AddCustomHeader("Importance: High");
+        // // For most clients expecting the Priority header:
+        // // 1 = High, 2 = Medium, 3 = Low
+        // $mail->Priority = 1;
+        // // MS Outlook custom header
+        // // May set to "Urgent" or "Highest" rather than "High"
+        // $mail->AddCustomHeader("X-MSMail-Priority: High");
+        // // Not sure if Priority will also set the Importance header:
+        // $mail->AddCustomHeader("Importance: High");
 
         //Recipients
         $mail->setFrom($email);
