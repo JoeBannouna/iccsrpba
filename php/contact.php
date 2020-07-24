@@ -41,7 +41,7 @@ if ($_SESSION['noOfSentMail'] < 30) {
         $mail->CharSet = 'UTF-8';                                   // Set the charset
 
         //Recipients
-        $mail->setFrom($_ENV["MAIL_USER"]);
+        $mail->setFrom($email);
         $mail->addAddress($_ENV["RECIEVER_MAIL"]);                  // Add a recipient
         
         // Content
