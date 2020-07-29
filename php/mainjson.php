@@ -18,7 +18,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
     } else if (isset($_POST["image"])) {
       // Uplaod new image
       $core = new Core();
-      unlink($json->src);         // Delete old file
+      unlink(ROOT_DIR.$json->src);         // Delete old file
       $time = time();
       $core->uploadImage($_FILES, "main", "main" . $time);    // Uplaod and set new one
       $json->src = "/images/main/main" . $time.".png";
