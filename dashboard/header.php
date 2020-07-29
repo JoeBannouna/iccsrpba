@@ -19,6 +19,9 @@
       <li class="nav-item <?php echo (isset($services) ? $services : ""); ?>">
         <a class="nav-link" href="cards">الخدمات</a>
       </li>
+      <li class="nav-item <?php echo (isset($main) ? $main : ""); ?>">
+        <a class="nav-link" href="main">الموقع</a>
+      </li>
       <div class="col-sm-3"></div>
       <br>
       <li class="nav-item"><a class="nav-link" href="logout">تسجيل الخروج</a></li>

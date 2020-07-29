@@ -17,7 +17,7 @@ class Core extends Logs {
   }
 
   // Uplaoding images
-  protected function uploadImage($files, $directory, $filename) {
+  public function uploadImage($files, $directory, $filename) {
     // Some data about the file
     $name = $files['file']['name'];
     $tmp_name = $files['file']['tmp_name'];

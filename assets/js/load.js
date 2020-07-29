@@ -109,6 +109,15 @@ $.ajax({
   url: "components/header?v=10",
   success: function (response) {
     $(".header.text-center").html(response);
-    loadContact();
+    $.ajax({
+      type: "get",
+      url: "php/mainjson.php",
+      success: function (response) {
+        data = JSON.parse(response);
+        $("#main-logo-image").attr("src", data.src);
+        $("#main-logo-title").html(data.title);
+        loadContact();
+      }
+    });
   }
 });

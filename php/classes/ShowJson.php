@@ -2,7 +2,7 @@
 
 class ShowJson extends Model {
 
-  protected function LoopServices($services) {
+  public function LoopServices($services) {
     $servicesArr = [];
 
     // PRINT THE SERVICES
