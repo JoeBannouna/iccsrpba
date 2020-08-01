@@ -1,5 +1,6 @@
 <?php
 
+
 include __DIR__ . DIRECTORY_SEPARATOR . 'env.php';
 
 // Get the signature from github

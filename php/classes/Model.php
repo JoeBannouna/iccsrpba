@@ -1,5 +1,6 @@
 <?php
 
+
 class Model extends Dbh {
     // THE MODEL (The only class which interacts with the database)
 

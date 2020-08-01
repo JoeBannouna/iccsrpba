@@ -1,5 +1,6 @@
 <?php
 
+
 class Core extends Logs {
   // Function for generating a token
   protected function getToken($length) {

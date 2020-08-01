@@ -1,5 +1,6 @@
 <?php
 
+
 class CreateDB extends Model {
   
   private $databaseName;

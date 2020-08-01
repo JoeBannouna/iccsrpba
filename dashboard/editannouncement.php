@@ -1,5 +1,6 @@
 <?php
 
+
 include '../php/autoload.php';
 include '../php/core.php';
 
@@ -24,7 +25,7 @@ $loggedin ? "" : header("Location: sign-in") && exit;
   
   <!-- Theme CSS -->
   <link id="theme-style" rel="stylesheet" href="/assets/css/theme-2.css">
-  <link id="theme-style" rel="stylesheet" href="/assets/css/main.css?v=11">
+  <link id="theme-style" rel="stylesheet" href="/assets/css/main.css?v=12">
   <link id="theme-style" rel="stylesheet" href="/assets/css/loading.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/droidarabickufi.css">
 
@@ -91,8 +92,8 @@ $loggedin ? "" : header("Location: sign-in") && exit;
   <!-- Javascript -->
   <script src="/assets/plugins/popper.min.js"></script>
   <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
-  <script src="/assets/js/main.js?v=11" activeHeaderLink="indexPage" id="main-script"></script>
-  <script src="/assets/js/dashboard.js?v=11"></script>
+  <script src="/assets/js/main.js?v=12" activeHeaderLink="indexPage" id="main-script"></script>
+  <script src="/assets/js/dashboard.js?v=12"></script>
   <script>
     if (findGetParameter("create") !== null) {
       if (findGetParameter("create") === "success") $("#create").html(`<div class="alert alert-success" role="alert">تم إنشاؤه بنجاح</div>`);
